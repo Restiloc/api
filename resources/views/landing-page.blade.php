@@ -19,7 +19,7 @@
                 <img class="minimized-logo" src="/static/images/logo-minimized.svg"/>
             </div>
             <div class="theme__switcher" id="{{ $theme }}">
-                <img src="/static/images/{{($theme) . '.svg'}}" data-theme="{{ $theme }}" data-next="{{ ($theme) === 'light' ? 'dark' : 'light' }}">
+                <img src="/static/images/{{ $theme }}.svg" data-theme="{{ $theme }}" data-next="{{ $theme === 'light' ? 'dark' : 'light' }}">
             </div>
         </div>
     </header>
@@ -33,10 +33,10 @@
                 </div>
             </div>
             <div class="application__illustration">
-                <img src="/static/images/{{$theme}}-iphone.svg"/>
+                <img src="/static/images/{{ $theme }}-iphone.svg"/>
             </div>
         </div>
     </main>
     @vite("resources/js/app.js")
 </body>
-</html>   
+</html>
