@@ -1,0 +1,153 @@
+:root {
+	--primary: #F8F8FC;
+	--secondary: #0F63C9;
+	--text-color: #F8F8FC;
+}
+
+[data-theme="dark"] {
+	--primary: #242B40;
+	--secondary: #464AA6;
+	--text-color: #F8F8FC;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: var(--primary); 
+	font-family: 'Montserrat';
+	color: var(--text-color);
+	transition: All 0.5s ease;
+}
+
+.wrapper {
+	max-width: 1280px;
+	display: flex;
+	width: 100%;
+	justify-content: center;
+}
+
+.minimized-logo {
+	display: none;
+}
+
+header {
+	height: 250px;
+	max-height: 250px;
+	display: flex;
+	justify-content: center;
+}
+
+header .wrapper {
+	display: flex;
+	align-items: center;
+}
+
+header .wrapper div {
+	flex: 1;
+}
+
+header .wrapper .application__logo {
+	margin-left: 55px;
+}
+
+header .wrapper .theme__switcher {
+	display: flex;
+	justify-content: end;
+	margin-right: 120px;
+}
+
+header .wrapper .theme__switcher:hover {
+	cursor: pointer;
+}
+
+main {
+	background-color: var(--secondary);
+	max-height: 700px;
+	display: flex;
+	justify-content: center;
+}
+
+main .wrapper .application__presentation {
+	max-width: 482px;
+	flex: 1;
+	margin-left: 150px;
+	display: flex;
+	align-items: center;
+	padding: 1.4px;
+}
+
+main .wrapper .application__presentation .container {
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+}
+
+main .wrapper .container .app-title {
+	font-style: normal;
+	font-weight: 700;
+	font-size: 65px;
+	line-height: 79px;
+}
+
+main .wrapper .container .subtext {
+	font-style: normal;
+	font-weight: 400;
+	font-size: 23px;
+	line-height: 28px;
+}
+
+main .wrapper .container .playstore__download {
+	margin-left: -15px;
+}
+
+main .wrapper .container .playstore__download img {
+	width: 218px;
+	height: 80px;
+}
+
+main .wrapper .application__illustration {
+	flex: 1;
+	display: flex;
+	justify-content: end;
+	align-items: center;
+}
+
+main .wrapper .application__illustration img {
+	margin-right: 150px;
+}
+
+@media screen and (max-width: 1080px) {
+	main .wrapper {
+		flex-direction: column;
+		justify-content: start;
+		align-items: center;
+		margin: 50px 20px 0 20px;
+	}
+	main .wrapper .application__presentation {
+		margin-left: 0;
+	}
+	main .wrapper .application__illustration {
+		justify-content: center;
+	}
+	main .wrapper .application__illustration img {
+		margin-right: 0;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.logo-full {
+		display: none;
+	}
+	.minimized-logo {
+		display: block;
+	}
+	header .wrapper .application__logo {
+		margin-left: 0;
+	}
+	header .wrapper .theme__switcher {
+		margin-right: 20px;
+	}
+}
