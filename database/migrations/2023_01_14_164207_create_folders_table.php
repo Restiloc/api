@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('folders', function (Blueprint $table) {
             $table->id();
             $table->string("nameExpertFile");
-            $table->foreignId("vehiclesLicencePlate")
+            $table->foreignId("vehicle_licencePlate")
                 ->reference("licencePlate")
                 ->on("vehicles")
                 ->onDelete('no action');

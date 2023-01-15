@@ -14,12 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('vehicles', function (Blueprint $table) {
-            $table->id("licencePlate");
+            $table->string("licencePlate")->unique();
+            $table->primary("licencePlate");
             $table->string("color");
             $table->integer("releaseYear");
-            $table->foreignId("modelId")
+            $table->foreignId("vehicle_model_id")
                 ->nullable()
-                ->constrained("models")
+                ->constrained("vehicle_models")
                 ->onDelete('set null');
             $table->timestamps();
         });

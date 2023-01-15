@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('unavailabilities', function (Blueprint $table) {
             $table->id();
             $table->boolean("customerResponsible");
-            $table->foreignId('unavailabilities_reasons_id')
-                ->constrained('unavailabilities_reasons')
+            $table->foreignId('reasons_id')
+                ->constrained('reasons')
                 ->onDelete('no action');
-            $table->foreignId('missions_experts_id')
-                ->constrained('missions_experts')
+            $table->foreignId('missions_id')
+                ->constrained('missions')
                 ->onDelete('no action');
             $table->timestamps();
         });

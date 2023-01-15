@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('missions_experts', function (Blueprint $table) {
+        Schema::create('missions', function (Blueprint $table) {
             $table->id();
             $table->timestamp("dateMission");
             $table->string("startedAt");
@@ -22,10 +22,10 @@ return new class extends Migration
                 ->reference("licencePlate")
                 ->on('vehicles')
                 ->onDelete('no action');
-            $table->foreignId('experts_id')
+            $table->foreignId('expert_id')
                 ->constrained('experts')
                 ->onDelete('no action');
-            $table->foreignId('garages_id')
+            $table->foreignId('garage_id')
                 ->constrained('garages')
                 ->onDelete('no action');
             $table->timestamps();
@@ -39,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('missions_experts');
+        Schema::dropIfExists('missions');
     }
 };
