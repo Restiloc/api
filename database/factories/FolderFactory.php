@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\UnavailabilitiesReasons>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Folders>
  */
-class UnavailabilitiesReasonsFactory extends Factory
+class FolderFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,8 @@ class UnavailabilitiesReasonsFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nameExpertFile' => fake()->name(),
+            'vehicle_licencePlate' => fake()->name(),
         ];
     }
 }

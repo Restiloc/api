@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Vehicles>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\UnavailabilitiesReasons>
  */
-class VehiclesFactory extends Factory
+class ReasonFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,7 @@ class VehiclesFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'label' => fake()->word()
         ];
     }
 }
