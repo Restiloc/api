@@ -53,10 +53,16 @@ header .wrapper .application__logo {
 	margin-left: 55px;
 }
 
+header .wrapper .container {
+	display: flex;
+	justify-content: end;
+}
+
 header .wrapper .theme__switcher {
 	display: flex;
 	justify-content: end;
 	margin-right: 120px;
+	max-width: 50px;
 }
 
 header .wrapper .theme__switcher:hover {

@@ -18,8 +18,10 @@
                 <img class="logo-full" src="/static/images/logo-full.svg"/>
                 <img class="minimized-logo" src="/static/images/logo-minimized.svg"/>
             </div>
-            <div class="theme__switcher" id="{{ $theme }}">
-                <img src="/static/images/{{ $theme }}.svg" data-theme="{{ $theme }}" data-next="{{ $theme === 'light' ? 'dark' : 'light' }}">
+            <div class="container">
+                <div class="theme__switcher" id="{{ $theme }}">
+                    <img src="/static/images/{{ $theme }}.svg" data-theme="{{ $theme }}" data-next="{{ $theme === 'light' ? 'dark' : 'light' }}">
+                </div>
             </div>
         </div>
     </header>
