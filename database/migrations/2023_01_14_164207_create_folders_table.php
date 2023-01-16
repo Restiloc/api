@@ -16,10 +16,7 @@ return new class extends Migration
         Schema::create('folders', function (Blueprint $table) {
             $table->id();
             $table->string("nameExpertFile");
-            $table->foreignId("vehicle_licencePlate")
-                ->reference("licencePlate")
-                ->on("vehicles")
-                ->onDelete('no action');
+            $table->string("vehicle_licencePlate")->index();
             $table->timestamps();
         });
     }

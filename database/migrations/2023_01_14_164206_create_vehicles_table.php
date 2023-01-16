@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('vehicles', function (Blueprint $table) {
+            $table->id();
             $table->string("licencePlate")->unique();
-            $table->primary("licencePlate");
             $table->string("color");
             $table->integer("releaseYear");
             $table->foreignId("vehicle_model_id")
