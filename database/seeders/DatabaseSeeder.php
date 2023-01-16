@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
 
-            if (!\App\Models\Vehicle::find($car['car_vin'])) {
+            if (!\App\Models\Vehicle::where($car['car_vin'])->exists()) {
                 \App\Models\Vehicle::create([
                     'licencePlate' => $car['car_vin'],
                     'color' => $car['car_color'],
