@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +19,4 @@ Route::get('/', function () {
         "theme" => $_COOKIE['theme'] ?? "light"
     ]);
 });
+Route::get('/test', [TestController::class, 'index']);
