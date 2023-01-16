@@ -14,7 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('landing-page')->with([
-        "theme" => $_COOKIE['theme'] ?? "light"
-    ]);
+    return view('landing-page');
 });
