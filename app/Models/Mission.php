@@ -57,6 +57,6 @@ class Mission extends Model
      */
     public function unavailability()
     {
-        return $this->belongsTo(Unavailability::class);
+        return $this->belongsTo(Unavailability::class, 'unavailability_id', 'id');
     }
 }
