@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Models>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\VehicleModel>
  */
-class ModelFactory extends Factory
+class VehicleModelFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,9 @@ class ModelFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'label' => fake()->word(),
+            'brand' => fake()->word(),
+            'vehicle_id' => 1,
         ];
     }
 }
