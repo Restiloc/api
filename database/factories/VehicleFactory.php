@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Vehicles>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Vehicle>
  */
 class VehicleFactory extends Factory
 {
@@ -17,7 +17,10 @@ class VehicleFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'licencePlate' => fake()->word(),
+            'color' => fake()->word(),
+            'releaseYear' => fake()->year(),
+            'vehicle_model_id' => 1,
         ];
     }
 }
