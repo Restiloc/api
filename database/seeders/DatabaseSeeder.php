@@ -6,7 +6,10 @@ namespace Database\Seeders;
 
 use App\Models\Expert;
 use App\Models\Garage;
+use App\Models\Mission;
 use App\Models\Reason;
+use App\Models\Unavailability;
+use App\Models\Vehicle;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,7 +21,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        /**
+         * Fake vehicles
+         */
         $cars = json_decode(file_get_contents(env('CARS_API_URL')), true)['cars'];
+
         foreach ($cars as $car) {
 
             if (!\App\Models\VehicleModel::where([
@@ -31,7 +38,7 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
 
-            if (!\App\Models\Vehicle::where($car['car_vin'])->exists()) {
+            if (!\App\Models\Vehicle::where('licencePlate', $car['car_vin'])->exists()) {
                 \App\Models\Vehicle::create([
                     'licencePlate' => $car['car_vin'],
                     'color' => $car['car_color'],
@@ -45,24 +52,43 @@ class DatabaseSeeder extends Seeder
 
             if (!\App\Models\Folder::find($car['car_vin'])) {
                 \App\Models\Folder::factory()->create([
-                    'vehicle_licencePlate' => \App\Models\Vehicle::find($car['car_vin'])->licencePlate,
+                    'vehicle_id' => \App\Models\Vehicle::where('licencePlate', $car['car_vin'])->first()->id,
                 ]);
             }
         }
 
+        /**
+         * Fake experts
+         */
         Expert::factory(20)->create();
         Expert::factory()->create([
             'username' => 'admin123',
             'password' => 'password'
         ]);
 
+        /**
+         * Fake garages
+         */
         Garage::factory(100)->create();
 
+        /**
+         * Fake reasons
+         */
         $reasons = ["Client absent", "Véhicule inaccessible", "Véhicule absent", "Adresse erronée"];
         foreach ($reasons as $reason) {
             Reason::factory()->create([
                 'label' => $reason
             ]);
         }
+
+        /**
+         * Fake unavailabilities
+         */
+        Unavailability::factory(10)->create();
+
+        /**
+         * Fake missions
+         */
+        Mission::factory(10)->create();
     }
 }
