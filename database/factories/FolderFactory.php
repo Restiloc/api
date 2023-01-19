@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Folders>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Folder>
  */
 class FolderFactory extends Factory
 {
@@ -18,7 +18,7 @@ class FolderFactory extends Factory
     {
         return [
             'nameExpertFile' => fake()->name(),
-            'vehicle_licencePlate' => fake()->name(),
+            'vehicle_id' => 1,
         ];
     }
 }
