@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\UnavailabilitiesReasons>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Reason>
  */
 class ReasonFactory extends Factory
 {
