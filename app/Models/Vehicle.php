@@ -10,21 +10,6 @@ class Vehicle extends Model
     use HasFactory;
 
     /**
-     * @var string
-     */
-    protected $primaryKey = 'licencePlate';
-
-    /**
-     * @var string
-     */
-    protected $keyType = 'string';
-
-    /**
-     * @var bool
-     */
-    public $incrementing = false;
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -38,11 +23,11 @@ class Vehicle extends Model
     /**
      * Get the model.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function model()
     {
-        return $this->hasOne(VehicleModel::class);
+        return $this->belongsTo(VehicleModel::class, 'vehicle_model_id', 'id');
     }
 
     /**
