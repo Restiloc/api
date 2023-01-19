@@ -17,10 +17,9 @@ return new class extends Migration
             $table->id();
             $table->timestamp("dateMission");
             $table->string("startedAt");
-            $table->string("kilometersCounter");
-            $table->foreignId('licencePlate_id')
-                ->reference("licencePlate")
-                ->on('vehicles')
+            $table->bigInteger("kilometersCounter");
+            $table->foreignId('vehicle_id')
+                ->constrained('vehicles')
                 ->onDelete('no action');
             $table->foreignId('expert_id')
                 ->constrained('experts')
