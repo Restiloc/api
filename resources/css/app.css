@@ -34,8 +34,8 @@ body {
 }
 
 header {
-	height: 250px;
-	max-height: 250px;
+	height: 165px;
+	max-height: 165px;
 	display: flex;
 	justify-content: center;
 }
@@ -67,6 +67,11 @@ header .wrapper .theme__switcher {
 
 header .wrapper .theme__switcher:hover {
 	cursor: pointer;
+}
+
+header .wrapper .theme__switcher img {
+	width: 35px;
+	height: 35px;
 }
 
 main {
@@ -155,5 +160,12 @@ main .wrapper .application__illustration img {
 	}
 	header .wrapper .theme__switcher {
 		margin-right: 20px;
+	}
+}
+
+@media screen and (min-height: 1200px) {
+	header {
+		height: 250px;
+		max-height: 250px;
 	}
 }
