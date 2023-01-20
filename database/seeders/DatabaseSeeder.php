@@ -11,6 +11,7 @@ use App\Models\Reason;
 use App\Models\Unavailability;
 use App\Models\Vehicle;
 use Illuminate\Database\Seeder;
+use PhpParser\Node\Stmt\Break_;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,7 +27,9 @@ class DatabaseSeeder extends Seeder
          */
         $cars = json_decode(file_get_contents(env('CARS_API_URL')), true)['cars'];
 
-        foreach ($cars as $car) {
+        foreach ($cars as $key => $car) {
+            if ($key > 50)
+                break;
 
             if (!\App\Models\VehicleModel::where([
                 ['label', $car['car_model']],
@@ -49,8 +52,8 @@ class DatabaseSeeder extends Seeder
                     ])->first()->id,
                 ]);
             }
-
         }
+        dd(Vehicle::count());
 
         /**
          * Fake experts
@@ -80,6 +83,10 @@ class DatabaseSeeder extends Seeder
          * Fake missions
          */
         Mission::factory(10)->create();
+        Mission::factory(5)->create([
+            'isFinished' => false,
+        ]);
+
 
         /**
          * Fake unavailabilities
