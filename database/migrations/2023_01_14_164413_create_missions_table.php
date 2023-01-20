@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use PhpOffice\PhpSpreadsheet\Shared\Trend\Trend;
 
 return new class extends Migration
 {
@@ -19,6 +20,7 @@ return new class extends Migration
             $table->string("startedAt")->nullable();
             $table->bigInteger("kilometersCounter");
             $table->string("nameExpertFile");
+            $table->boolean("isFinished")->default(false);
             $table->foreignId('vehicle_id')
                 ->constrained('vehicles')
                 ->onDelete('no action');

@@ -23,6 +23,7 @@ class MissionFactory extends Factory
             'dateMission' => now()->addDays(fake()->numberBetween(0, 30)),
             'kilometersCounter' => fake()->numberBetween(1000, 200000),
             'nameExpertFile' => fake()->name(),
+            'isFinished' => true,
             'vehicle_id' => Vehicle::all()->random()->id,
             'expert_id' => Expert::all()->random()->id,
             'garage_id' => Garage::all()->random()->id,
