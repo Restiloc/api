@@ -31,10 +31,10 @@ class Unavailability extends Model
     /**
      * Get the mission for this Unavailability.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function mission()
     {
-        return $this->hasOne(Mission::class);
+        return $this->hasMany(Mission::class);
     }
 }
