@@ -50,11 +50,6 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
 
-            if (!\App\Models\Folder::find($car['car_vin'])) {
-                \App\Models\Folder::factory()->create([
-                    'vehicle_id' => \App\Models\Vehicle::where('licencePlate', $car['car_vin'])->first()->id,
-                ]);
-            }
         }
 
         /**
