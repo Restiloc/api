@@ -20,6 +20,7 @@ body {
 	font-family: 'Montserrat';
 	color: var(--text-color);
 	transition: All 0.5s ease;
+	height: 100vh;
 }
 
 .wrapper {
@@ -76,7 +77,8 @@ header .wrapper .theme__switcher img {
 
 main {
 	background-color: var(--secondary);
-	max-height: 700px;
+	min-height: 600px;
+	height: 70vh;
 	display: flex;
 	justify-content: center;
 }
@@ -99,15 +101,15 @@ main .wrapper .application__presentation .container {
 main .wrapper .container .app-title {
 	font-style: normal;
 	font-weight: 700;
-	font-size: 65px;
-	line-height: 79px;
+	font-size: 4rem;
+	line-height: 5rem;
 }
 
 main .wrapper .container .subtext {
 	font-style: normal;
 	font-weight: 400;
-	font-size: 23px;
-	line-height: 28px;
+	font-size: 1.4rem;
+	line-height: 2.5rem;
 }
 
 main .wrapper .container .playstore__download {
@@ -167,5 +169,9 @@ main .wrapper .application__illustration img {
 	header {
 		height: 250px;
 		max-height: 250px;
+	}
+	header .wrapper .theme__switcher img {
+		width: 50px;
+		height: 50px;
 	}
 }
