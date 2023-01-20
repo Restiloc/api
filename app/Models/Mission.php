@@ -18,16 +18,17 @@ class Mission extends Model
         'dateMission',
         'startedAt',
         'kilometersCounter',
+        'nameExpertFile',
     ];
 
     /**
-     * Get the folder related to this mission.
+     * Get the vehicle related to this mission.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function folder()
+    public function vehicle()
     {
-        return $this->hasOne(Vehicle::class, 'id', 'folder_id');
+        return $this->hasOne(Vehicle::class, 'id', 'vehicle_id');
     }
 
     /**
