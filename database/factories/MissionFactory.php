@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Expert;
+use App\Models\Folder;
 use App\Models\Garage;
 use App\Models\Vehicle;
 use App\Models\Unavailability;
@@ -21,9 +22,9 @@ class MissionFactory extends Factory
     public function definition()
     {
         return [
-            'startedAt' => fake()->dateTime(),
-            'kilometersCounter' => fake()->numberBetween(0, 100000),
-            'vehicle_id' => Vehicle::all()->random()->id,
+            'dateMission' => now()->addDays(fake()->numberBetween(0, 30)),
+            'kilometersCounter' => fake()->numberBetween(1000, 200000),
+            'folder_id' => Folder::all()->random()->id,
             'expert_id' => Expert::all()->random()->id,
             'garage_id' => Garage::all()->random()->id,
         ];
