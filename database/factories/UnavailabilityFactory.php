@@ -19,7 +19,7 @@ class UnavailabilityFactory extends Factory
         return [
             'customerResponsible' => fake()->boolean(),
             'reason_id' => random_int(1, 4),
-            'mission_id' => 1,
+            'mission_id' => random_int(1, 4)
         ];
     }
 }
