@@ -18,8 +18,9 @@ return new class extends Migration
             $table->timestamp("dateMission");
             $table->string("startedAt")->nullable();
             $table->bigInteger("kilometersCounter");
-            $table->foreignId('folder_id')
-                ->constrained('folders')
+            $table->string("nameExpertFile");
+            $table->foreignId('vehicle_id')
+                ->constrained('vehicles')
                 ->onDelete('no action');
             $table->foreignId('expert_id')
                 ->constrained('experts')
