@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Expert;
-use App\Models\Folder;
 use App\Models\Garage;
 use App\Models\Mission;
 use App\Models\Reason;
@@ -17,13 +16,12 @@ class TestController extends Controller
 {
     public function index()
     {
-        // dd(Vehicle::with(['folder', 'model'])->first());
+        // dd(Vehicle::with(['missions', 'model'])->first());
         // dd(VehicleModel::with(['vehicles'])->first());
-        // dd(Mission::with(['folder', 'garage', 'expert', 'unavailability'])->first());
+        // dd(Mission::with(['vehicle', 'garage', 'expert', 'unavailability'])->first());
         // dd(Expert::with(['missions'])->first());
-        // dd(Unavailability::with(['reason', 'mission'])->first());
+        // dd(Unavailability::with(['reason', 'missions'])->first());
         // dd(Reason::with(['unavailabilities'])->first());
-        // dd(Folder::with(['vehicle', 'missions'])->first());
         // dd(Garage::with(['missions'])->first());
     }
 }
