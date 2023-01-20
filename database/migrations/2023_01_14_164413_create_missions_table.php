@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('missions', function (Blueprint $table) {
             $table->id();
             $table->timestamp("dateMission");
-            $table->string("startedAt");
+            $table->string("startedAt")->nullable();
             $table->bigInteger("kilometersCounter");
-            $table->foreignId('vehicle_id')
-                ->constrained('vehicles')
+            $table->foreignId('folder_id')
+                ->constrained('folders')
                 ->onDelete('no action');
             $table->foreignId('expert_id')
                 ->constrained('experts')
