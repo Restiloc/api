@@ -21,13 +21,13 @@ class Mission extends Model
     ];
 
     /**
-     * Get the vehicle related to this mission.
+     * Get the folder related to this mission.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function vehicle()
+    public function folder()
     {
-        return $this->hasOne(Vehicle::class);
+        return $this->hasOne(Vehicle::class, 'id', 'folder_id');
     }
 
     /**
@@ -37,7 +37,7 @@ class Mission extends Model
      */
     public function expert()
     {
-        return $this->hasOne(Expert::class);
+        return $this->hasOne(Expert::class, 'id', 'expert_id');
     }
 
     /**
@@ -47,16 +47,16 @@ class Mission extends Model
      */
     public function garage()
     {
-        return $this->hasOne(Garage::class);
+        return $this->hasOne(Garage::class, 'id', 'garage_id');
     }
 
     /**
      * Check unavailability.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function unavailability()
     {
-        return $this->belongsTo(Unavailability::class, 'unavailability_id', 'id');
+        return $this->hasMany(Unavailability::class);
     }
 }
