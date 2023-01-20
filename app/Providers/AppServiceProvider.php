@@ -24,6 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::share("theme", $_COOKIE['theme'] ?? "light");
+        View::share("theme", $_COOKIE['theme'] ?? "dark");
     }
 }
