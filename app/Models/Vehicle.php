@@ -31,12 +31,12 @@ class Vehicle extends Model
     }
 
     /**
-     * Get the folder for the Vehicle.
+     * Get the missions for the Vehicle.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function folder()
+    public function missions()
     {
-        return $this->hasOne(Folder::class);
+        return $this->hasMany(Mission::class);
     }
 }
