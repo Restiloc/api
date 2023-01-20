@@ -25,16 +25,16 @@ class Unavailability extends Model
      */
     public function reason()
     {
-        return $this->hasOne(Reason::class);
+        return $this->hasOne(Reason::class, 'id', 'reason_id');
     }
 
     /**
-     * Get the mission for this Unavailability.
+     * Get the missions for this Unavailability.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function mission()
+    public function missions()
     {
-        return $this->hasMany(Mission::class);
+        return $this->hasMany(Mission::class, 'id', 'mission_id');
     }
 }
