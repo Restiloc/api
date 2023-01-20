@@ -82,13 +82,13 @@ class DatabaseSeeder extends Seeder
         }
 
         /**
-         * Fake unavailabilities
-         */
-        Unavailability::factory(10)->create();
-
-        /**
          * Fake missions
          */
         Mission::factory(10)->create();
+
+        /**
+         * Fake unavailabilities
+         */
+        Unavailability::factory(10)->create();
     }
 }
