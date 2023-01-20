@@ -20,7 +20,7 @@ return new class extends Migration
                 ->constrained('reasons')
                 ->onDelete('no action');
             $table->foreignId('mission_id')
-                ->on('missions')
+                ->constrained('missions') 
                 ->onDelete('no action');
             $table->timestamps();
         });
