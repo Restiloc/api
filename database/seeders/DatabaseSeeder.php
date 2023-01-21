@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         /**
-         * Fake vehicles
+         * Make fake vehicles and models
          */
         $cars = json_decode(file_get_contents(env('CARS_API_URL')), true)['cars'];
 
@@ -31,6 +31,9 @@ class DatabaseSeeder extends Seeder
             if ($key > 50)
                 break;
 
+            /**
+             * Make fake models
+             */
             if (!\App\Models\VehicleModel::where([
                 ['label', $car['car_model']],
                 ['brand', $car['car']],
@@ -41,6 +44,9 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
 
+            /**
+             * Make fake vehicles
+             */
             if (!\App\Models\Vehicle::where('licencePlate', $car['car_vin'])->exists()) {
                 \App\Models\Vehicle::create([
                     'licencePlate' => $car['car_vin'],
@@ -53,10 +59,9 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
         }
-        dd(Vehicle::count());
 
         /**
-         * Fake experts
+         * Make fake experts
          */
         Expert::factory(20)->create();
         Expert::factory()->create([
@@ -65,12 +70,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         /**
-         * Fake garages
+         * Make fake garages
          */
         Garage::factory(100)->create();
 
         /**
-         * Fake reasons
+         * Make fake reasons
          */
         $reasons = ["Client absent", "Véhicule inaccessible", "Véhicule absent", "Adresse erronée"];
         foreach ($reasons as $reason) {
@@ -80,7 +85,7 @@ class DatabaseSeeder extends Seeder
         }
 
         /**
-         * Fake missions
+         * Make fake missions
          */
         Mission::factory(10)->create();
         Mission::factory(5)->create([
@@ -89,7 +94,7 @@ class DatabaseSeeder extends Seeder
 
 
         /**
-         * Fake unavailabilities
+         * Make fake unavailabilities
          */
         Unavailability::factory(10)->create();
     }
