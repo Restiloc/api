@@ -17,7 +17,7 @@ class Mission extends JsonResource
         return [
             'dateMission' => 'The date of the mission is : ' . $this->dateMission,
             'startedAt' => 'The mission start at : ' . $this->startedAt . ' hour.',
-            'kilometersCounter' => 'The kilometers counter show : ' . $this->kilometersCounter . ' km.',
+            'kilometersCounter' => 'The kilometers counter shows : ' . $this->kilometersCounter . ' km.',
             'nameExpertFile' => 'The file of expert is : ' . $this->nameExpertFile,
             'isFinished' => 'Is the mission finished ? ' . $this->isFinished,
             'vehicle_id' => 'Is the vehicle number : ' . $this->vehicle_id,
