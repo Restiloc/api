@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Resources\Vehicle as ResourcesVehicle;
+use App\Http\Controllers\Controller;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,8 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        //
+        return ResourcesVehicle::collection(Vehicle::orderByDesc('releaseYear')->get());
+
     }
 
     /**
@@ -25,7 +28,11 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (Vehicle::create($request->all())){
+            return response()->json([
+                'success' => 'Vehicle add with success'
+            ], 200);
+        };
     }
 
     /**
@@ -36,7 +43,7 @@ class VehicleController extends Controller
      */
     public function show(Vehicle $vehicle)
     {
-        //
+        return new ResourcesVehicle($vehicle);
     }
 
     /**
@@ -48,7 +55,11 @@ class VehicleController extends Controller
      */
     public function update(Request $request, Vehicle $vehicle)
     {
-        //
+        if ($vehicle->update($request->all())) {
+            return response()->json([
+                'success' => 'Vehicle modify with success'
+            ], 200);
+        };
     }
 
     /**
@@ -59,6 +70,10 @@ class VehicleController extends Controller
      */
     public function destroy(Vehicle $vehicle)
     {
-        //
+        if ($vehicle->delete()) {
+            return response()->json([
+                'success' => 'Vehicle delete with success'
+            ], 200);
+        };
     }
 }
