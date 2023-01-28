@@ -64,10 +64,13 @@ class DatabaseSeeder extends Seeder
          * Make fake experts
          */
         Expert::factory(20)->create();
-        Expert::factory()->create([
+        $expert = Expert::factory()->create([
             'username' => 'admin123',
-            'password' => 'password'
+            'password' => 'password',
         ]);
+
+        echo 'The token is : ' . $expert->createToken("apiToken")->plainTextToken . PHP_EOL;
+
 
         /**
          * Make fake garages
