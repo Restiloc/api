@@ -1,15 +1,18 @@
 <?php
 
+use App\Models\Expert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Laravel\Sanctum\PersonalAccessToken;
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ExpertController;
 use App\Http\Controllers\Api\GarageController;
-use App\Http\Controllers\Api\MissionController;
 use App\Http\Controllers\Api\ReasonController;
-use App\Http\Controllers\Api\UnavailabilityController;
+use App\Http\Controllers\Api\MissionController;
 use App\Http\Controllers\Api\VehicleController;
 use App\Http\Controllers\Api\VehicleModelController;
 use App\Http\Controllers\Api\VehicleExpertController;
+use App\Http\Controllers\Api\UnavailabilityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,19 +24,19 @@ use App\Http\Controllers\Api\VehicleExpertController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('/auth/register', [AuthController::class, 'create']);
+Route::post('/auth/login', [AuthController::class, 'login']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('experts', ExpertController::class);
+    Route::apiResource('garages', GarageController::class);
+    Route::apiResource('missions', MissionController::class);
+    Route::apiResource('reasons', ReasonController::class);
+    Route::apiResource('unavailabilities', UnavailabilityController::class);
+    Route::apiResource('vehicles', VehicleController::class);
+    Route::apiResource('models', VehicleModelController::class);
+    Route::get('expertises', [VehicleExpertController::class, 'index']);
+    Route::get('/me', function (Request $request) {
+        return $request->user();
+    });
 });
-
-// Route::middleware('auth:sanctum')->group(function () {
-Route::apiResource('expert', ExpertController::class);
-Route::apiResource('garage', GarageController::class);
-Route::apiResource('mission', MissionController::class);
-Route::apiResource('reason', ReasonController::class);
-Route::apiResource('unavailability', UnavailabilityController::class);
-Route::apiResource('vehicle', VehicleController::class);
-Route::apiResource('vehicle_model', VehicleModelController::class);
-Route::apiResource('vehicle_expert', VehicleExpertController::class);
-
-// });
