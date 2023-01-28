@@ -15,11 +15,11 @@ class Expert extends JsonResource
     public function toArray($request)
     {
         return [
-            'name' => 'The expert name is : ' . $this->name,
-            'firstName' => 'The expert pseudo : ' . $this->firstName,
-            'email' => 'The expert email : ' . $this->email,
+            'lastName' => $this->lastName,
+            'firstName' => $this->firstName,
+            'email' => 'Your email : ' . $this->email,
             'phoneNumber' => 'Phone number : ' . $this->phoneNumber,
-            'username' => 'The expert username is : ' . $this->username
+            'username' => 'Your username : ' . $this->username,
         ];
     }
 }

@@ -17,13 +17,13 @@ class ExpertFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
+            'lastName' => fake()->lastName(),
             'firstName' => fake()->firstName(),
             'email' => fake()->email(),
             'email_verified_at' => now(),
             'phoneNumber' => fake()->phoneNumber(),
             'username' => fake()->userName(),
-            'password' => fake()->password()
+            'password' => fake()->password(8, 20),
         ];
     }
 }
