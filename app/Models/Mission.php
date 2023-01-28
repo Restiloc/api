@@ -60,4 +60,14 @@ class Mission extends Model
     {
         return $this->hasMany(Unavailability::class);
     }
+
+    /**
+     * Check pree.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function pree()
+    {
+        return $this->hasMany(Pree::class);
+    }
 }
