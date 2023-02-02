@@ -47,6 +47,15 @@ class Expert extends Authenticatable
     ];
 
     /**
+     * The rules for validation.
+     *
+     * @var array<int, string>
+     */
+    protected $rules = [
+        'email' => 'email|unique:experts'
+    ];
+
+    /**
      * Get the missions owned by the Expert.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
