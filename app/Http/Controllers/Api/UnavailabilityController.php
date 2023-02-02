@@ -16,7 +16,7 @@ class UnavailabilityController extends Controller
      */
     public function index()
     {
-        return ResourcesUnavailability::collection(Unavailability::get());
+        return ResourcesUnavailability::collection(Unavailability::with('reason', 'missions')->get());
     }
 
     /**
@@ -27,11 +27,21 @@ class UnavailabilityController extends Controller
      */
     public function store(Request $request)
     {
-        if (Unavailability::create($request->all())) {
+        $validatedData = $request->validate([
+            'customerResponsible' => 'required|boolean',
+        ]);
+
+        if (Unavailability::create($validatedData)) {
             return response()->json([
-                'success' => 'Unavailability add with success'
+                'success' => 'true',
+                'message' => 'Unavailability added successfully',
             ], 201);
-        };
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed to add unavailability',
+            ], 400);
+        }
     }
 
     /**
@@ -42,7 +52,7 @@ class UnavailabilityController extends Controller
      */
     public function show(Unavailability $unavailability)
     {
-        return new ResourcesUnavailability($unavailability);
+        return new ResourcesUnavailability($unavailability->load('reason', 'missions'));
     }
 
     /**
@@ -54,11 +64,21 @@ class UnavailabilityController extends Controller
      */
     public function update(Request $request, Unavailability $unavailability)
     {
+        $request->validate([
+            'customerResponsible' => 'required|boolean',
+        ]);
+
         if ($unavailability->update($request->all())) {
             return response()->json([
-                'success' => 'Unavailability modify with success'
+                'success' => 'true',
+                'message' => 'Unavailability updated successfully',
             ], 200);
-        };
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed to update unavailability',
+            ], 400);
+        }
     }
 
     /**
@@ -69,10 +89,23 @@ class UnavailabilityController extends Controller
      */
     public function destroy(Unavailability $unavailability)
     {
+        if (!$unavailability) {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Unavailability not found',
+            ], 404);
+        }
+
         if ($unavailability->delete()) {
             return response()->json([
-                'success' => 'Unavailability delete with success'
+                'success' => 'true',
+                'message' => 'Unavailability deleted successfully',
             ], 200);
-        };
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed to delete unavailability',
+            ], 400);
+        }
     }
 }

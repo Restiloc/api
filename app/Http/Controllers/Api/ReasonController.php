@@ -16,7 +16,7 @@ class ReasonController extends Controller
      */
     public function index()
     {
-        return ResourcesReason::collection(Reason::get());
+        return ResourcesReason::collection(Reason::with('unavailabilities')->get());
     }
 
     /**
@@ -27,11 +27,21 @@ class ReasonController extends Controller
      */
     public function store(Request $request)
     {
-        if (Reason::create($request->all())) {
+        $validatedData = $request->validate([
+            'label' => 'required|string',
+        ]);
+
+        if (Reason::create($validatedData)) {
             return response()->json([
-                'success' => 'Reason add with success'
+                'success' => 'true',
+                'message' => 'Reason added successfully',
             ], 201);
-        };
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed to add reason',
+            ], 400);
+        }
     }
 
     /**
@@ -42,7 +52,7 @@ class ReasonController extends Controller
      */
     public function show(Reason $reason)
     {
-        return new ResourcesReason($reason);
+        return new ResourcesReason($reason->load('unavailabilities'));
     }
 
     /**
@@ -54,11 +64,21 @@ class ReasonController extends Controller
      */
     public function update(Request $request, Reason $reason)
     {
+        $request->validate([
+            'label' => 'required|string',
+        ]);
+
         if ($reason->update($request->all())) {
             return response()->json([
-                'success' => 'Reason modify with success'
+                'success' => 'true',
+                'message' => 'Reason updated successfully',
             ], 200);
-        };
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed to update reason',
+            ], 400);
+        }
     }
 
     /**
@@ -69,10 +89,23 @@ class ReasonController extends Controller
      */
     public function destroy(Reason $reason)
     {
+        if (!$reason) {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Reason not found',
+            ], 404);
+        }
+
         if ($reason->delete()) {
             return response()->json([
-                'success' => 'Reason delete with success'
+                'success' => 'true',
+                'message' => 'Reason deleted successfully',
             ], 200);
-        };
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed to delete reason',
+            ], 400);
+        }
     }
 }

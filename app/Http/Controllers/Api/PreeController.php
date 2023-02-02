@@ -16,7 +16,7 @@ class PreeController extends Controller
      */
     public function index()
     {
-        return ResourcesPree::collection(Pree::get());
+        return ResourcesPree::collection(Pree::with('mission')->get());
     }
 
     /**
@@ -27,11 +27,24 @@ class PreeController extends Controller
      */
     public function store(Request $request)
     {
-        if (Pree::create($request->all())) {
+        $validatedData = $request->validate([
+            'label' => 'required|string',
+            'description' => 'required|string',
+            'image' => 'required|string',
+            'signature' => 'required|string',
+        ]);
+
+        if (Pree::create($validatedData)) {
             return response()->json([
-                'success' => 'Pree add with success'
+                'success' => 'true',
+                'message' => 'PREE added successfully',
             ], 201);
-        };
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed to add PREE',
+            ], 400);
+        }
     }
 
     /**
@@ -42,7 +55,7 @@ class PreeController extends Controller
      */
     public function show(Pree $pree)
     {
-        return new ResourcesPree($pree);
+        return new ResourcesPree($pree->load('mission'));
     }
 
     /**
@@ -54,11 +67,24 @@ class PreeController extends Controller
      */
     public function update(Request $request, Pree $pree)
     {
+        $request->validate([
+            'label' => 'required|string',
+            'description' => 'required|string',
+            'image' => 'required|string',
+            'signature' => 'required|string',
+        ]);
+
         if ($pree->update($request->all())) {
             return response()->json([
-                'success' => 'Pree modify with success'
+                'success' => 'true',
+                'message' => 'PREE updated successfully',
             ], 200);
-        };
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed to update PREE',
+            ], 400);
+        }
     }
 
     /**
@@ -69,10 +95,25 @@ class PreeController extends Controller
      */
     public function destroy(Pree $pree)
     {
+        if (!$pree) {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'PREE not found'
+            ], 404);
+        }
+
         if ($pree->delete()) {
             return response()->json([
-                'success' => 'Pree delete with success'
+                'success' => 'true',
+                'message' => 'PREE deleted successfully',
+                'data' => $pree
             ], 200);
-        };
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed to delete PREE',
+                'data' => $pree
+            ], 400);
+        }
     }
 }

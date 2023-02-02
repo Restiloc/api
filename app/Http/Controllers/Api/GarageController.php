@@ -16,7 +16,7 @@ class GarageController extends Controller
      */
     public function index()
     {
-        return ResourcesGarage::collection(Garage::get());
+        return ResourcesGarage::collection(Garage::with('missions')->get());
     }
 
     /**
@@ -27,11 +27,28 @@ class GarageController extends Controller
      */
     public function store(Request $request)
     {
-        if (Garage::create($request->all())) {
+        $validatedData = $request->validate([
+            'name' => 'required|string',
+            'addressNumber' => 'required|string',
+            'street' => 'required|string',
+            'postalCode' => 'required|string',
+            'city' => 'required|string',
+            'phoneNumber' => 'required|string',
+            'latitude' => 'required|string',
+            'longitude' => 'required|string',
+        ]);
+
+        if (Garage::create($validatedData)) {
             return response()->json([
-                'success' => 'Garage add with success'
+                'success' => 'true',
+                'message' => 'Garage added successfully',
             ], 201);
-        };
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed to add garage',
+            ], 400);
+        }
     }
 
     /**
@@ -42,7 +59,7 @@ class GarageController extends Controller
      */
     public function show(Garage $garage)
     {
-        return new ResourcesGarage($garage);
+        return new ResourcesGarage($garage->load('missions'));
     }
 
     /**
@@ -54,11 +71,28 @@ class GarageController extends Controller
      */
     public function update(Request $request, Garage $garage)
     {
+        $request->validate([
+            'name' => 'required|string',
+            'addressNumber' => 'required|int',
+            'street' => 'required|string',
+            'postalCode' => 'required|int',
+            'city' => 'required|string',
+            'phoneNumber' => 'required|int|min:10',
+            'latitude' => 'required|string',
+            'longitude' => 'required|string',
+        ]);
+
         if ($garage->update($request->all())) {
             return response()->json([
-                'success' => 'Garage modify with success'
+                'success' => true,
+                'message' => 'Garage updated successfully',
             ], 200);
-        };
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to update garage',
+            ], 400);
+        }
     }
 
     /**
@@ -69,10 +103,22 @@ class GarageController extends Controller
      */
     public function destroy(Garage $garage)
     {
+        if (!$garage) {
+            return response()->json([
+                'error' => 'Garage not found'
+            ], 404);
+        }
+
         if ($garage->delete()) {
             return response()->json([
-                'success' => 'Garage delete with success'
+                'success' => true,
+                'message' => 'Garage deleted successfully'
             ], 200);
-        };
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to delete garage'
+            ], 400);
+        }
     }
 }

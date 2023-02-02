@@ -16,7 +16,7 @@ class ExpertController extends Controller
      */
     public function index()
     {
-        return ResourcesExpert::collection(Expert::paginate(4));
+        return ResourcesExpert::collection(Expert::with('missions')->get());
     }
 
     /**
@@ -27,11 +27,27 @@ class ExpertController extends Controller
      */
     public function store(Request $request)
     {
-        if (Expert::create($request->all())) {
+        $validatedData = $request->validate([
+            'lastName' => 'required|string',
+            'firstName' => 'required|string',
+            'email' => 'required|email',
+            'phoneNumber' => 'required|int|min:10',
+            'username' => 'required|string',
+            'password' => 'required|Between:8,12',
+            'password_confirmation' => 'required|same:password',
+        ]);
+
+        if (Expert::create($validatedData)) {
             return response()->json([
-                'success' => 'Expert add with success'
+                'success' => 'true',
+                'message' => 'Expert added successfully',
             ], 201);
-        };
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed to add expert',
+            ], 400);
+        }
     }
 
     /**
@@ -42,7 +58,7 @@ class ExpertController extends Controller
      */
     public function show(Expert $expert)
     {
-        return new ResourcesExpert($expert);
+        return new ResourcesExpert($expert->load('missions'));
     }
 
     /**
@@ -54,11 +70,27 @@ class ExpertController extends Controller
      */
     public function update(Request $request, Expert $expert)
     {
+        $request->validate([
+            'lastName' => 'required|string',
+            'firstName' => 'required|string',
+            'email' => 'required|email',
+            'phoneNumber' => 'required|int|min:10',
+            'username' => 'required|string',
+            'password' => 'required|password|Between:8,12',
+            'password_confirmation' => 'required|same:password',
+        ]);
+
         if ($expert->update($request->all())) {
             return response()->json([
-                'success' => 'Expert modify with success'
+                'success' => 'true',
+                'message' => 'Expert updated successfully',
             ], 200);
-        };
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed to update expert',
+            ], 400);
+        }
     }
 
     /**
@@ -69,10 +101,24 @@ class ExpertController extends Controller
      */
     public function destroy(Expert $expert)
     {
+        if (!$expert) {
+            return response()->json([
+                'error' => 'Expert not found'
+            ], 404);
+        }
+
         if ($expert->delete()) {
             return response()->json([
-                'success' => 'Expert delete with success'
+                'success' => 'true',
+                'message' => 'Expert deleted successfully',
+                'data' => $expert
             ], 200);
-        };
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed to delete expert',
+                'data' => $expert
+            ], 400);
+        }
     }
 }

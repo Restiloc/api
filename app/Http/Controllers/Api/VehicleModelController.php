@@ -16,7 +16,7 @@ class VehicleModelController extends Controller
      */
     public function index()
     {
-        return ResourcesVehicleModel::collection(VehicleModel::get());
+        return ResourcesVehicleModel::collection(VehicleModel::with('vehicles')->get());
     }
 
     /**
@@ -27,52 +27,87 @@ class VehicleModelController extends Controller
      */
     public function store(Request $request)
     {
-        if (VehicleModel::create($request->all())) {
+        $validatedData = $request->validate([
+            'label' => 'required|string',
+            'brand' => 'required|string',
+        ]);
+
+        if (VehicleModel::create($validatedData)) {
             return response()->json([
-                'success' => 'VehicleModel add with success'
+                'success' => 'true',
+                'message' => 'Model of vehicle added successfully',
             ], 201);
-        };
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed to add the model of vehicle ',
+            ], 400);
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\VehicleModel  $vehicleModel
+     * @param  \App\Models\VehicleModel  $model
      * @return \Illuminate\Http\Response
      */
-    public function show(VehicleModel $vehicleModel)
+    public function show(VehicleModel $model)
     {
-        return new ResourcesVehicleModel($vehicleModel);
+        return new ResourcesVehicleModel($model->load('vehicles'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\VehicleModel  $vehicleModel
+     * @param  \App\Models\VehicleModel  $model
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, VehicleModel $vehicleModel)
+    public function update(Request $request, VehicleModel $model)
     {
-        if ($vehicleModel->update($request->all())) {
+        $request->validate([
+            'label' => 'required|string',
+            'brand' => 'required|string',
+        ]);
+
+        if ($model->update($request->all())) {
             return response()->json([
-                'success' => 'VehicleModel modify with success'
+                'success' => 'true',
+                'message' => 'Model of vehicle updated successfully',
             ], 200);
-        };
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed to update the model of vehicle ',
+            ], 400);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\VehicleModel  $vehicleModel
+     * @param  \App\Models\VehicleModel  $model
      * @return \Illuminate\Http\Response
      */
-    public function destroy(VehicleModel $vehicleModel)
+    public function destroy(VehicleModel $model)
     {
-        if ($vehicleModel->delete()) {
+        if (!$model) {
             return response()->json([
-                'success' => 'VehicleModel delete with success'
+                'success' => 'false',
+                'message' => 'Model of vehicle not found',
+            ], 404);
+        }
+
+        if ($model->delete()) {
+            return response()->json([
+                'success' => 'true',
+                'message' => 'Model of vehicle deleted successfully',
             ], 200);
-        };
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed to delete the model of vehicle ',
+            ], 400);
+        }
     }
 }

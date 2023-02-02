@@ -16,7 +16,7 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        return ResourcesVehicle::collection(Vehicle::orderByDesc('releaseYear')->get());
+        return ResourcesVehicle::collection(Vehicle::with('model', 'missions')->get());
     }
 
     /**
@@ -27,11 +27,23 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
-        if (Vehicle::create($request->all())) {
+        $validatedData = $request->validate([
+            'licencePlate' => 'required|string',
+            'color' => 'required|string',
+            'releaseYear' => 'required|integer',
+        ]);
+
+        if (Vehicle::create($validatedData)) {
             return response()->json([
-                'success' => 'Vehicle add with success'
+                'success' => 'true',
+                'message' => 'Vehicle added successfully',
             ], 201);
-        };
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed to add vehicle',
+            ], 400);
+        }
     }
 
     /**
@@ -42,7 +54,7 @@ class VehicleController extends Controller
      */
     public function show(Vehicle $vehicle)
     {
-        return new ResourcesVehicle($vehicle);
+        return new ResourcesVehicle($vehicle->load('model', 'missions'));
     }
 
     /**
@@ -54,11 +66,23 @@ class VehicleController extends Controller
      */
     public function update(Request $request, Vehicle $vehicle)
     {
+        $request->validate([
+            'licencePlate' => 'required|string',
+            'color' => 'required|string',
+            'releaseYear' => 'required|integer',
+        ]);
+
         if ($vehicle->update($request->all())) {
             return response()->json([
-                'success' => 'Vehicle modify with success'
+                'success' => 'true',
+                'message' => 'Vehicle updated successfully',
             ], 200);
-        };
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed to update vehicle',
+            ], 400);
+        }
     }
 
     /**
@@ -69,10 +93,23 @@ class VehicleController extends Controller
      */
     public function destroy(Vehicle $vehicle)
     {
+        if (!$vehicle) {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Vehicle not found',
+            ], 404);
+        }
+
         if ($vehicle->delete()) {
             return response()->json([
-                'success' => 'Vehicle delete with success'
+                'success' => 'true',
+                'message' => 'Vehicle deleted successfully',
             ], 200);
-        };
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed to delete vehicle',
+            ], 400);
+        }
     }
 }

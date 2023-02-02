@@ -27,11 +27,25 @@ class MissionController extends Controller
      */
     public function store(Request $request)
     {
-        if (Mission::create($request->all())) {
+        $validatedData = $request->validate([
+            'dateMission' => 'required|date',
+            'startedAt' => 'required|time',
+            'kilometersCounter' => 'required|bigInteger',
+            'nameExpertFile' => 'required|string',
+            'isFinished' => 'required|boolean',
+        ]);
+
+        if (Mission::create($validatedData)) {
             return response()->json([
-                'success' => 'Mission add with success'
+                'success' => 'true',
+                'message' => 'Mission added successfully',
             ], 201);
-        };
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed to add mission',
+            ], 400);
+        }
     }
 
     /**
@@ -54,11 +68,25 @@ class MissionController extends Controller
      */
     public function update(Request $request, Mission $mission)
     {
+        $request->validate([
+            'dateMission' => 'required|date',
+            'startedAt' => 'required|time',
+            'kilometersCounter' => 'required|bigInteger',
+            'nameExpertFile' => 'required|string',
+            'isFinished' => 'required|boolean',
+        ]);
+
         if ($mission->update($request->all())) {
             return response()->json([
-                'success' => 'Mission modify with success'
+                'success' => 'true',
+                'message' => 'Mission updated successfully',
             ], 200);
-        };
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed to update the mission',
+            ], 400);
+        }
     }
 
     /**
@@ -69,10 +97,23 @@ class MissionController extends Controller
      */
     public function destroy(Mission $mission)
     {
+        if (!$mission) {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Mission not found',
+            ], 404);
+        }
+
         if ($mission->delete()) {
             return response()->json([
-                'success' => 'Mission delete with success'
+                'success' => 'true',
+                'message' => 'Mission deleted successfully',
             ], 200);
-        };
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed to delete mission',
+            ], 400);
+        }
     }
 }
