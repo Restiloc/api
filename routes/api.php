@@ -38,8 +38,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('vehicles', VehicleController::class);
     Route::apiResource('models', VehicleModelController::class);
     Route::apiResource('pree', PreeController::class);
-    Route::get('expertises', [VehicleExpertController::class, 'index']);
+    Route::get('expertises', [VehicleExpertController::class, 'index'])->name('expertises.index');
     Route::get('/me', function (Request $request) {
-        return $request->user();
+        return $request->user()->load('missions');
     });
 });
