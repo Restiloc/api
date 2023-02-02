@@ -2,20 +2,23 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-
+use App\Models\Pree;
 use App\Models\Expert;
 use App\Models\Garage;
-use App\Models\Mission;
-use App\Models\Pree;
 use App\Models\Reason;
-use App\Models\Unavailability;
+use App\Models\Mission;
 use App\Models\Vehicle;
+use App\Models\VehicleModel;
+use App\Models\Unavailability;
 use Illuminate\Database\Seeder;
-use PhpParser\Node\Stmt\Break_;
+use Symfony\Component\Console\Helper\ProgressBar;
+use Symfony\Component\Console\Output\ConsoleOutput;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class DatabaseSeeder extends Seeder
 {
+    protected $output;
+
     /**
      * Seed the application's database.
      *
@@ -23,23 +26,31 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // Seed the vehicles and models
+        $output = new ConsoleOutput();
+        $output->writeln('Seeding vehicles and models in progress...');
+
         /**
          * Make fake vehicles and models
          */
+        $limit = 50;
+
         $cars = json_decode(file_get_contents(env('CARS_API_URL')), true)['cars'];
 
+        $progressBar = new ProgressBar($output, $limit);
+
         foreach ($cars as $key => $car) {
-            if ($key > 50)
+            if ($key > $limit)
                 break;
 
             /**
              * Make fake models
              */
-            if (!\App\Models\VehicleModel::where([
+            if (!VehicleModel::where([
                 ['label', $car['car_model']],
                 ['brand', $car['car']],
             ])->exists()) {
-                \App\Models\VehicleModel::create([
+                VehicleModel::create([
                     'label' => $car['car_model'],
                     'brand' => $car['car'],
                 ]);
@@ -48,63 +59,129 @@ class DatabaseSeeder extends Seeder
             /**
              * Make fake vehicles
              */
-            if (!\App\Models\Vehicle::where('licencePlate', $car['car_vin'])->exists()) {
-                \App\Models\Vehicle::create([
+            if (!Vehicle::where('licencePlate', $car['car_vin'])->exists()) {
+                Vehicle::create([
                     'licencePlate' => $car['car_vin'],
                     'color' => $car['car_color'],
                     'releaseYear' => $car['car_model_year'],
-                    'vehicle_model_id' => \App\Models\VehicleModel::where([
+                    'vehicle_model_id' => VehicleModel::where([
                         ['label', $car['car_model']],
                         ['brand', $car['car']],
                     ])->first()->id,
                 ]);
             }
+
+            $progressBar->advance();
         }
+
+        $progressBar->finish();
+
+        // Seed the experts
+        $output = new ConsoleOutput();
+        $output->writeln('Seeding experts in progress...');
+
 
         /**
          * Make fake experts
          */
-        Expert::factory(20)->create();
-        $expert = Expert::factory()->create([
+        $nbExperts = 20;
+
+        $progressBar = new ProgressBar($output, $nbExperts);
+
+        Expert::factory()->create([
             'username' => 'admin123',
             'password' => 'password',
         ]);
 
-        echo 'The token is : ' . $expert->createToken("apiToken")->plainTextToken . PHP_EOL;
+        Expert::factory($nbExperts)->create();
 
+        $progressBar->advance();
+
+        $progressBar->finish();
+
+        // Seed the garages
+        $output = new ConsoleOutput();
+        $output->writeln('Seeding garages in progress...');
 
         /**
          * Make fake garages
          */
-        Garage::factory(100)->create();
+        $nbGarages = 100;
+
+        $progressBar = new ProgressBar($output, $nbGarages);
+
+        Garage::factory($nbGarages)->create();
+
+        $progressBar->advance();
+
+        $progressBar->finish();
+
+        // Seed the reasons
+        $output = new ConsoleOutput();
+        $output->writeln('Seeding reasons in progress...');
 
         /**
          * Make fake reasons
          */
         $reasons = ["Client absent", "Véhicule inaccessible", "Véhicule absent", "Adresse erronée"];
+
+        $progressBar = new ProgressBar($output, count($reasons));
+
         foreach ($reasons as $reason) {
             Reason::factory()->create([
                 'label' => $reason
             ]);
+
+            $progressBar->advance();
         }
+
+        $progressBar->finish();
+
+        // Seed the missions
+        $output = new ConsoleOutput();
+        $output->writeln('Seeding missions in progress...');
 
         /**
          * Make fake missions
          */
+        $progressBar = new ProgressBar($output, 15);
+
         Mission::factory(10)->create();
         Mission::factory(5)->create([
             'isFinished' => false,
         ]);
 
+        $progressBar->advance();
 
+        $progressBar->finish();
+
+        // Seed the unavailabilities
+        $output = new ConsoleOutput();
+        $output->writeln('Seeding unavailabilities in progress...');
         /**
          * Make fake unavailabilities
          */
+        $progressBar = new ProgressBar($output, 10);
+
         Unavailability::factory(10)->create();
+
+        $progressBar->advance();
+
+        $progressBar->finish();
+
+        // Seed the pree
+        $output = new ConsoleOutput();
+        $output->writeln('Seeding pree in progress...');
 
         /**
          * Make fake pree
          */
+        $progressBar = new ProgressBar($output, 50);
+
         Pree::factory(50)->create();
+
+        $progressBar->advance();
+
+        $progressBar->finish();
     }
 }
