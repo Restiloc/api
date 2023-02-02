@@ -15,11 +15,13 @@ class Pree extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'label' => $this->label,
             'description' => $this->description,
             'image' => $this->image,
             'signature' => $this->signature,
-            'mission' => new Mission($this->mission),
+            'route' => route('pree.index') . "/" . $this->id,
+            'mission' => new Mission($this->whenLoaded('mission')),
         ];
     }
 }

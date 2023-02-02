@@ -15,11 +15,13 @@ class Mission extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'dateMission' => $this->dateMission,
             'startedAt' => $this->startedAt,
             'kilometersCounter' => $this->kilometersCounter,
             'nameExpertFile' => $this->nameExpertFile,
             'isFinished' => $this->isFinished,
+            'route' => route('missions.index') . "/" . $this->id,
             'vehicle' => new Vehicle($this->whenLoaded('vehicle')),
             'expert' => new Expert($this->whenLoaded('expert')),
             'garage' => new Garage($this->whenLoaded('garage')),

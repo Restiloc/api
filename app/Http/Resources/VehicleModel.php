@@ -15,8 +15,11 @@ class VehicleModel extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'label' => $this->label,
-            'brand' => $this->brand
+            'brand' => $this->brand,
+            'route' => route('models.index') . "/" . $this->id,
+            'vehicles' => Vehicle::collection($this->whenLoaded('vehicles'))
         ];
     }
 }

@@ -15,12 +15,14 @@ class Expert extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'lastName' => $this->lastName,
             'firstName' => $this->firstName,
             'email' => $this->email,
             'phoneNumber' => $this->phoneNumber,
             'username' => $this->username,
-            'missions' => Mission::collection($this->missions),
+            'route' => route('experts.index') . "/" . $this->id,
+            'missions' => Mission::collection($this->whenLoaded('missions')),
         ];
     }
 }

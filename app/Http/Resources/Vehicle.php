@@ -15,10 +15,12 @@ class Vehicle extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'licencePlate' => $this->licencePlate,
             'color' => $this->color,
             'releaseYear' => $this->releaseYear,
-            'mission' => new Mission($this->mission),
+            'route' => route('vehicles.index') . "/" . $this->id,
+            'missions' => Mission::collection($this->whenLoaded('missions')),
         ];
     }
 }

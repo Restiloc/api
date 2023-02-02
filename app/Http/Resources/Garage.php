@@ -15,6 +15,7 @@ class Garage extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'name' => $this->name,
             'addressNumber' => $this->addressNumber,
             'street' => $this->street,
@@ -23,7 +24,8 @@ class Garage extends JsonResource
             'phoneNumber' => $this->phoneNumber,
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
-            'missions' => Mission::collection($this->missions),
+            'url' => route('garages.index') . "/" . $this->id,
+            'missions' => Mission::collection($this->whenLoaded('missions')),
         ];
     }
 }

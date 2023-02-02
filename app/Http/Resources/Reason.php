@@ -15,7 +15,10 @@ class Reason extends JsonResource
     public function toArray($request)
     {
         return [
-            'label' => $this->label
+            'id' => $this->id,
+            'label' => $this->label,
+            'route' => route('reasons.index') . "/" . $this->id,
+            'unavailabilities' => Unavailability::collection($this->whenLoaded('unavailabilities')),
         ];
     }
 }

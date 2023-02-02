@@ -15,11 +15,14 @@ class VehicleExpert extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'licencePlate' => $this->licencePlate,
             'color' => $this->color,
             'releaseYear' => $this->releaseYear,
             'label' => $this->label,
-            'brand' => $this->brand
+            'brand' => $this->brand,
+            'route' => route('expertises.index'),
+            'mission' => new Mission($this->whenLoaded('mission')),
         ];
     }
 }
