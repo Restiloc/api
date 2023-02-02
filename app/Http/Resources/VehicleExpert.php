@@ -15,9 +15,9 @@ class VehicleExpert extends JsonResource
     public function toArray($request)
     {
         return [
-            'licencePlate' => 'The licence plate is : ' . $this->licencePlate,
-            'color' => 'Color : ' . $this->color,
-            'releaseYear' => 'The release year : ' . $this->releaseYear,
+            'licencePlate' => $this->licencePlate,
+            'color' => $this->color,
+            'releaseYear' => $this->releaseYear,
             'label' => $this->label,
             'brand' => $this->brand
         ];

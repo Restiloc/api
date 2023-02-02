@@ -54,11 +54,11 @@ class Mission extends Model
     /**
      * Check unavailability.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function unavailability()
     {
-        return $this->hasMany(Unavailability::class);
+        return $this->hasOne(Unavailability::class);
     }
 
     /**

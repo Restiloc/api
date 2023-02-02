@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\Expert;
 use App\Models\Garage;
 use App\Models\Mission;
+use App\Models\Pree;
 use App\Models\Reason;
 use App\Models\Unavailability;
 use App\Models\Vehicle;
@@ -100,5 +101,10 @@ class DatabaseSeeder extends Seeder
          * Make fake unavailabilities
          */
         Unavailability::factory(10)->create();
+
+        /**
+         * Make fake pree
+         */
+        Pree::factory(50)->create();
     }
 }

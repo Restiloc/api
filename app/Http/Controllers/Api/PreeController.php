@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Resources\Mission as ResourcesMission;
 use App\Http\Controllers\Controller;
-use App\Models\Mission;
+use App\Http\Resources\Pree as ResourcesPree;
+use App\Models\Pree;
 use Illuminate\Http\Request;
 
-class MissionController extends Controller
+class PreeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class MissionController extends Controller
      */
     public function index()
     {
-        return ResourcesMission::collection(Mission::with('vehicle', 'expert', 'garage', 'unavailability', 'pree')->get());
+        return ResourcesPree::collection(Pree::get());
     }
 
     /**
@@ -27,9 +27,9 @@ class MissionController extends Controller
      */
     public function store(Request $request)
     {
-        if (Mission::create($request->all())) {
+        if (Pree::create($request->all())) {
             return response()->json([
-                'success' => 'Mission add with success'
+                'success' => 'Pree add with success'
             ], 201);
         };
     }
@@ -37,26 +37,26 @@ class MissionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Mission  $mission
+     * @param  \App\Models\Pree  $pree
      * @return \Illuminate\Http\Response
      */
-    public function show(Mission $mission)
+    public function show(Pree $pree)
     {
-        return new ResourcesMission($mission->load('vehicle', 'expert', 'garage', 'unavailability', 'pree'));
+        return new ResourcesPree($pree);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Mission  $mission
+     * @param  \App\Models\Pree  $pree
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mission $mission)
+    public function update(Request $request, Pree $pree)
     {
-        if ($mission->update($request->all())) {
+        if ($pree->update($request->all())) {
             return response()->json([
-                'success' => 'Mission modify with success'
+                'success' => 'Pree modify with success'
             ], 200);
         };
     }
@@ -64,14 +64,14 @@ class MissionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Mission  $mission
+     * @param  \App\Models\Pree  $pree
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mission $mission)
+    public function destroy(Pree $pree)
     {
-        if ($mission->delete()) {
+        if ($pree->delete()) {
             return response()->json([
-                'success' => 'Mission delete with success'
+                'success' => 'Pree delete with success'
             ], 200);
         };
     }

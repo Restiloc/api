@@ -30,7 +30,7 @@ class UnavailabilityController extends Controller
         if (Unavailability::create($request->all())) {
             return response()->json([
                 'success' => 'Unavailability add with success'
-            ], 200);
+            ], 201);
         };
     }
 

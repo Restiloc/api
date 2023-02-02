@@ -30,7 +30,7 @@ class GarageController extends Controller
         if (Garage::create($request->all())) {
             return response()->json([
                 'success' => 'Garage add with success'
-            ], 200);
+            ], 201);
         };
     }
 

@@ -15,9 +15,9 @@ class Unavailability extends JsonResource
     public function toArray($request)
     {
         return [
-            'customerResponsible' => 'Is the customer responsible ? ' . $this->customerResponsible,
-            'mission_id' => 'Is the mission number : ' . $this->mission_id,
-            'reason_id' => 'Is the reason number : ' . $this->reason_id
+            'customerResponsible' => $this->customerResponsible,
+            'missions' => Mission::collection($this->missions),
+            'reason' => new Reason($this->reason),
         ];
     }
 }

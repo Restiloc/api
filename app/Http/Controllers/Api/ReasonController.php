@@ -30,7 +30,7 @@ class ReasonController extends Controller
         if (Reason::create($request->all())) {
             return response()->json([
                 'success' => 'Reason add with success'
-            ], 200);
+            ], 201);
         };
     }
 

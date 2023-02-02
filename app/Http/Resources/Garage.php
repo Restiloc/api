@@ -15,14 +15,15 @@ class Garage extends JsonResource
     public function toArray($request)
     {
         return [
-            'name' => 'Garage : ' . $this->name,
-            'addressNumber' => 'Address number : ' . $this->addressNumber,
-            'street' => 'Street : ' . $this->street,
-            'postalCode' => 'Postal Code : ' . $this->postalCode,
-            'city' => 'City : ' . $this->city,
-            'phoneNumber' => 'Phone number : ' . $this->phoneNumber,
+            'name' => $this->name,
+            'addressNumber' => $this->addressNumber,
+            'street' => $this->street,
+            'postalCode' => $this->postalCode,
+            'city' => $this->city,
+            'phoneNumber' => $this->phoneNumber,
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
+            'missions' => Mission::collection($this->missions),
         ];
     }
 }

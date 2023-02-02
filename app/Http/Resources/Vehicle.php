@@ -15,9 +15,10 @@ class Vehicle extends JsonResource
     public function toArray($request)
     {
         return [
-            'licencePlate' => 'Vehicle licence plate : ' . $this->licencePlate,
-            'color' => 'The vehicle color is : ' . $this->color,
-            'releaseYear' => 'The release year is : ' . $this->releaseYear
+            'licencePlate' => $this->licencePlate,
+            'color' => $this->color,
+            'releaseYear' => $this->releaseYear,
+            'mission' => new Mission($this->mission),
         ];
     }
 }

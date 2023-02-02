@@ -17,9 +17,10 @@ class Expert extends JsonResource
         return [
             'lastName' => $this->lastName,
             'firstName' => $this->firstName,
-            'email' => 'Your email : ' . $this->email,
-            'phoneNumber' => 'Phone number : ' . $this->phoneNumber,
-            'username' => 'Your username : ' . $this->username,
+            'email' => $this->email,
+            'phoneNumber' => $this->phoneNumber,
+            'username' => $this->username,
+            'missions' => Mission::collection($this->missions),
         ];
     }
 }

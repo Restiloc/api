@@ -15,14 +15,16 @@ class Mission extends JsonResource
     public function toArray($request)
     {
         return [
-            'dateMission' => 'The date of the mission is : ' . $this->dateMission,
-            'startedAt' => 'The mission start at : ' . $this->startedAt . ' hour.',
-            'kilometersCounter' => 'The kilometers counter shows : ' . $this->kilometersCounter . ' km.',
-            'nameExpertFile' => 'The file of expert is : ' . $this->nameExpertFile,
-            'isFinished' => 'Is the mission finished ? ' . $this->isFinished,
-            'vehicle_id' => 'Is the vehicle number : ' . $this->vehicle_id,
-            'expert_id' => 'Is the expert number : ' . $this->expert_id,
-            'garage_id' => 'Is the garage number : ' . $this->garage_id
+            'dateMission' => $this->dateMission,
+            'startedAt' => $this->startedAt,
+            'kilometersCounter' => $this->kilometersCounter,
+            'nameExpertFile' => $this->nameExpertFile,
+            'isFinished' => $this->isFinished,
+            'vehicle' => new Vehicle($this->whenLoaded('vehicle')),
+            'expert' => new Expert($this->whenLoaded('expert')),
+            'garage' => new Garage($this->whenLoaded('garage')),
+            'unavailability' => new Unavailability($this->whenLoaded('unavailability')),
+            'pree' => Pree::collection($this->whenLoaded('pree')),
         ];
     }
 }

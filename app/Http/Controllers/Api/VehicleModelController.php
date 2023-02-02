@@ -30,7 +30,7 @@ class VehicleModelController extends Controller
         if (VehicleModel::create($request->all())) {
             return response()->json([
                 'success' => 'VehicleModel add with success'
-            ], 200);
+            ], 201);
         };
     }
 

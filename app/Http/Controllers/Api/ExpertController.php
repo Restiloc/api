@@ -16,7 +16,7 @@ class ExpertController extends Controller
      */
     public function index()
     {
-        return ResourcesExpert::collection(Expert::get());
+        return ResourcesExpert::collection(Expert::paginate(4));
     }
 
     /**
@@ -30,7 +30,7 @@ class ExpertController extends Controller
         if (Expert::create($request->all())) {
             return response()->json([
                 'success' => 'Expert add with success'
-            ], 200);
+            ], 201);
         };
     }
 
@@ -71,7 +71,7 @@ class ExpertController extends Controller
     {
         if ($expert->delete()) {
             return response()->json([
-               'success' => 'Expert delete with success'
+                'success' => 'Expert delete with success'
             ], 200);
         };
     }

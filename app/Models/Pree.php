@@ -10,6 +10,13 @@ class Pree extends Model
     use HasFactory;
 
     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'pree';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -28,6 +35,6 @@ class Pree extends Model
      */
     public function mission()
     {
-        return $this->belongsTo(Mission::class, 'id', 'mission_id');
+        return $this->belongsTo(Mission::class);
     }
 }

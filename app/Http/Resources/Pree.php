@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class VehicleModel extends JsonResource
+class Pree extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,7 +16,10 @@ class VehicleModel extends JsonResource
     {
         return [
             'label' => $this->label,
-            'brand' => $this->brand
+            'description' => $this->description,
+            'image' => $this->image,
+            'signature' => $this->signature,
+            'mission' => new Mission($this->mission),
         ];
     }
 }
