@@ -1,66 +1,100 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<a name="readme-top"></a>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<div align="center">
 
-## About Laravel
+  <img src="https://cdn.alexishenry.eu/shared/images/restiloc-logo-full.svg" alt="logo" width="220" height="auto" />
+  <h1>Restiloc</h1>
+  
+  <p>
+    Restiloc API built with Laravel
+  </p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<a href="https://github.com/Restiloc/docs/tree/master/api"><strong>Documentation »</strong></a>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<h4>
+    <a href="https://restiloc.space">Go to the site</a>
+  <span> · </span>
+    <a href="https://github.com/Restiloc/api/issues">Report a bug</a>
+  <span> · </span>
+    <a href="https://github.com/Restiloc/api/issues">I have an idea</a>
+  </h4>
+</div>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<br/>
 
-## Learning Laravel
+# :notebook_with_decorative_cover: Summary
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- [:notebook\_with\_decorative\_cover: About the project](#star2-about-the-project)
+  * [:space\_invader: Techs](#space_invader-techs)
+- [:toolbox: Getting Started](#toolbox-getting-started)
+  * [:gear: Setup](#gear-setup)
+  * [:gear: Configuration](#gear-config)
+  * [:test\_tube: Tests](#test_tube-tests)
+- [:wave: Authors](#wave-authors)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## :star2: About the project
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+This is the API of the Restiloc mobile application.
 
-## Laravel Sponsors
+### :space_invader: Techs
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+![Laravel](https://img.shields.io/badge/laravel%20-hotpink.svg?&style=for-the-badge&logo=laravel&color=gray)
+[![Shell](https://img.shields.io/badge/bash%20-hotpink.svg?&style=for-the-badge&logo=gnu-bash&logoColor=4EAA25&color=gray)]()
 
-### Premium Partners
+## :toolbox: Getting Started
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### :gear: Setup
 
-## Contributing
+**Clone the repository**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+$ git clone https://github.com/Restiloc/api
+```
 
-## Code of Conduct
+**Install dependencies**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+$ npm install && composer install
+```
 
-## Security Vulnerabilities
+### :gear: Configuration
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+**Configure the environment variables**
 
-## License
+```diff
+- DB_DATABASE=laravel
+- DB_USERNAME=root
+- DB_PASSWORD=
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
++ DB_DATABASE=laravel
++ DB_USERNAME=root
++ DB_PASSWORD=
+```
+
+**Setup encryption key**
+
+```bash
+$ php artisan key:generate
+```
+
+**Seed the database**
+
+```bash
+$ php artisan migrate:fresh {--seed}
+```
+
+### :test_tube: Tests
+
+**Run the tests using the following command**
+
+```bash
+$ php artisan test
+```
+
+## :wave: Contributors
+
+* **Vladimir Sacchetto** _alias_ [@Vladimir9595](https://github.com/Vladimir9595)
+* **Alizée Hett** _alias_ [@Dinholu](https://github.com/Dinholu)
+* **Alexis Henry** _alias_ [@AlxisHenry](https://github.com/AlxisHenry)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
