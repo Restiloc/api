@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('experts', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
+            $table->string("lastName");
             $table->string("firstName");
             $table->string("email")->unique();
             $table->timestamp('email_verified_at')->nullable();

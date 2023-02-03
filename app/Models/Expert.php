@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
+use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Expert extends Model
+
+class Expert extends Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -16,11 +19,12 @@ class Expert extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'firstname',
+        'lastName',
+        'firstName',
         'email',
         'phoneNumber',
         'username',
+        'password',
     ];
 
     /**
@@ -40,6 +44,16 @@ class Expert extends Model
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+    ];
+
+    /**
+     * The rules for validation.
+     *
+     * @var array<int, string>
+     */
+    protected $rules = [
+        'email' => 'email|unique:experts,email',
+        'username' => 'string|unique:experts,username'
     ];
 
     /**

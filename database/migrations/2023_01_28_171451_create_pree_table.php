@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('unavailabilities', function (Blueprint $table) {
+        Schema::create('pree', function (Blueprint $table) {
             $table->id();
-            $table->boolean("customerResponsible")->default(false);
-            $table->foreignId('reason_id')
-                ->constrained('reasons')
-                ->onDelete('no action');
+            $table->string('label');
+            $table->string('description');
+            $table->string('image');
+            $table->string('signature');
             $table->foreignId('mission_id')
                 ->constrained('missions')
                 ->onDelete('no action');
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('unavailabilities');
+        Schema::dropIfExists('pree');
     }
 };

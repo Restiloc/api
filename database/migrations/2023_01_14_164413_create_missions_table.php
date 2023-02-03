@@ -16,8 +16,8 @@ return new class extends Migration
     {
         Schema::create('missions', function (Blueprint $table) {
             $table->id();
-            $table->timestamp("dateMission");
-            $table->string("startedAt")->nullable();
+            $table->date("dateMission");
+            $table->time("startedAt")->nullable();
             $table->bigInteger("kilometersCounter");
             $table->string("nameExpertFile");
             $table->boolean("isFinished")->default(false);
