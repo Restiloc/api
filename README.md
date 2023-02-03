@@ -47,13 +47,13 @@ This is the API of the Restiloc mobile application.
 
 **Clone the repository**
 
-```
+```bash
 $ git clone https://github.com/Restiloc/api
 ```
 
 **Install dependencies**
 
-```
+```bash
 $ npm install && composer install
 ```
 
@@ -73,8 +73,14 @@ $ npm install && composer install
 
 **Setup encryption key**
 
-```
+```bash
 $ php artisan key:generate
+```
+
+**Seed the database**
+
+```bash
+$ php artisan migrate:fresh {--seed}
 ```
 
 ### :test_tube: Tests
