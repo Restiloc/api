@@ -13,7 +13,6 @@ use App\Models\Unavailability;
 use Illuminate\Database\Seeder;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Output\ConsoleOutput;
-use Symfony\Component\Console\Output\OutputInterface;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,16 +27,18 @@ class DatabaseSeeder extends Seeder
     {
         // Seed the vehicles and models
         $output = new ConsoleOutput();
-        $output->writeln('Seeding vehicles and models in progress...');
+        $this->command->comment("Seeding the vehicles and models in progress...\n");
 
         /**
          * Make fake vehicles and models
          */
-        $limit = 50;
+        $limit = 49;
 
         $cars = json_decode(file_get_contents(env('CARS_API_URL')), true)['cars'];
 
         $progressBar = new ProgressBar($output, $limit);
+
+        $progressBar->start();
 
         foreach ($cars as $key => $car) {
             if ($key > $limit)
@@ -78,8 +79,7 @@ class DatabaseSeeder extends Seeder
 
         // Seed the experts
         $output = new ConsoleOutput();
-        $output->writeln('Seeding experts in progress...');
-
+        $this->command->comment("\n\nSeeding experts in progress...\n");
 
         /**
          * Make fake experts
@@ -88,20 +88,27 @@ class DatabaseSeeder extends Seeder
 
         $progressBar = new ProgressBar($output, $nbExperts);
 
+        $progressBar->start();
+
         Expert::factory()->create([
             'username' => 'admin123',
             'password' => 'password',
         ]);
 
-        Expert::factory($nbExperts)->create();
-
-        $progressBar->advance();
+        for (
+            $i = 0;
+            $i < $nbExperts;
+            $i++
+        ) {
+            Expert::factory()->create();
+            $progressBar->advance();
+        }
 
         $progressBar->finish();
 
         // Seed the garages
         $output = new ConsoleOutput();
-        $output->writeln('Seeding garages in progress...');
+        $this->command->comment("\n\nSeeding garages in progress...\n");
 
         /**
          * Make fake garages
@@ -110,15 +117,22 @@ class DatabaseSeeder extends Seeder
 
         $progressBar = new ProgressBar($output, $nbGarages);
 
-        Garage::factory($nbGarages)->create();
+        $progressBar->start();
 
-        $progressBar->advance();
+        for (
+            $i = 0;
+            $i < $nbGarages;
+            $i++
+        ) {
+            Garage::factory()->create();
+            $progressBar->advance();
+        }
 
         $progressBar->finish();
 
         // Seed the reasons
         $output = new ConsoleOutput();
-        $output->writeln('Seeding reasons in progress...');
+        $this->command->comment("\n\nSeeding reasons in progress...\n");
 
         /**
          * Make fake reasons
@@ -126,6 +140,8 @@ class DatabaseSeeder extends Seeder
         $reasons = ["Client absent", "Véhicule inaccessible", "Véhicule absent", "Adresse erronée"];
 
         $progressBar = new ProgressBar($output, count($reasons));
+
+        $progressBar->start();
 
         foreach ($reasons as $reason) {
             Reason::factory()->create([
@@ -139,49 +155,74 @@ class DatabaseSeeder extends Seeder
 
         // Seed the missions
         $output = new ConsoleOutput();
-        $output->writeln('Seeding missions in progress...');
+        $this->command->comment("\n\nSeeding missions in progress...\n");
 
         /**
          * Make fake missions
          */
         $progressBar = new ProgressBar($output, 15);
 
-        Mission::factory(10)->create();
+        $progressBar->start();
+
+        for (
+            $i = 0;
+            $i < 10;
+            $i++
+        ) {
+            Mission::factory()->create();
+            $progressBar->advance();
+        }
+
         Mission::factory(5)->create([
             'isFinished' => false,
         ]);
 
-        $progressBar->advance();
+        $progressBar->advance(5);
 
         $progressBar->finish();
 
         // Seed the unavailabilities
         $output = new ConsoleOutput();
-        $output->writeln('Seeding unavailabilities in progress...');
+        $this->command->comment("\n\nSeeding unavailabilities in progress...\n");
         /**
          * Make fake unavailabilities
          */
         $progressBar = new ProgressBar($output, 10);
 
-        Unavailability::factory(10)->create();
+        $progressBar->start();
 
-        $progressBar->advance();
+        for (
+            $i = 0;
+            $i < 10;
+            $i++
+        ) {
+            Unavailability::factory()->create();
+            $progressBar->advance();
+        }
 
         $progressBar->finish();
 
         // Seed the pree
         $output = new ConsoleOutput();
-        $output->writeln('Seeding pree in progress...');
+        $this->command->comment("\n\nSeeding pree in progress...\n");
 
         /**
          * Make fake pree
          */
         $progressBar = new ProgressBar($output, 50);
 
-        Pree::factory(50)->create();
+        $progressBar->start();
 
-        $progressBar->advance();
+        for (
+            $i = 0;
+            $i < 50;
+            $i++
+        ) {
+            Pree::factory()->create();
+            $progressBar->advance();
+        }
 
         $progressBar->finish();
+        $this->command->line("\n");
     }
 }
