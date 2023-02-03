@@ -19,7 +19,6 @@ class VehicleModelFactory extends Factory
         return [
             'label' => fake()->word(),
             'brand' => fake()->word(),
-            'vehicle_id' => 1,
         ];
     }
 }
