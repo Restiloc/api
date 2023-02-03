@@ -32,7 +32,7 @@ class ExpertController extends Controller
             'firstName' => 'required|string',
             'email' => 'required|email',
             'phoneNumber' => 'required|int|min:10',
-            'username' => 'required|string',
+            'username' => 'required|username|string',
             'password' => 'required|Between:8,12',
             'password_confirmation' => 'required|same:password',
         ]);
@@ -111,13 +111,11 @@ class ExpertController extends Controller
             return response()->json([
                 'success' => 'true',
                 'message' => 'Expert deleted successfully',
-                'data' => $expert
             ], 200);
         } else {
             return response()->json([
                 'success' => 'false',
                 'message' => 'Failed to delete expert',
-                'data' => $expert
             ], 400);
         }
     }

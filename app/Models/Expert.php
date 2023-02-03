@@ -52,7 +52,8 @@ class Expert extends Authenticatable
      * @var array<int, string>
      */
     protected $rules = [
-        'email' => 'email|unique:experts'
+        'email' => 'email|unique:experts,email',
+        'username' => 'string|unique:experts,username'
     ];
 
     /**
