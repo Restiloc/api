@@ -54,7 +54,7 @@ curl \
 
 :::
 
-## Get a unavailabilities <Badge type="tip" text="GET"/>
+## Show a unavailabilities <Badge type="tip" text="GET"/>
 
 #### Code samples
 
