@@ -2,6 +2,7 @@ import { defineConfig } from "vitepress";
 
 export default defineConfig({
     base: "/docs/",
+    outDir: "../public/docs",
     title: "Restiloc",
     lastUpdated: true,
     cleanUrls: true,
