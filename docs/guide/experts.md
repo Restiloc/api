@@ -1,7 +1,5 @@
 # Experts
 
-With this route you can get all experts including relations.
-
 ## List all experts <Badge type="tip" text="GET"/>
 
 #### Code samples
@@ -12,8 +10,11 @@ GET /api/experts
 
 ::: code-group
 
-```bash :line-numbers {3} [cURL]
-curl
+```bash :line-numbers [cURL]
+curl \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <YOUR-TOKEN>" \
+  https://restiloc.space/api/experts
 ```
 
 :::
@@ -22,12 +23,32 @@ curl
 
 ::: code-group
 
-```json :line-numbers {3} [Example response]
-curl
-```
-
-```json :line-numbers {3} [Response schema]
-import type { UserConfig } from 'vitepress'
+```json :line-numbers [Example response]
+{
+  "data":[
+    {
+      "id":1,
+      "lastName":"HETT",
+      "firstName":"Alizée",
+      "email":"ali.he@gmail.fr",
+      "phoneNumber":"0685256893",
+      "username":"ali.he",
+      "route":"https:\/\/restiloc.space\/api\/experts\/1",
+      "missions":[
+        {
+          "id":3,
+          "dateMission":"2023-02-06",
+          "startedAt":null,
+          "kilometersCounter":185467,
+          "nameExpertFile":"Garrett Bailey",
+          "isFinished":1,
+          "route":"https:\/\/restiloc.space\/api\/missions\/3"
+        }
+      ]
+    }
+  ],
+  ...
+}
 ```
 
 :::
@@ -42,8 +63,11 @@ GET /api/experts/{id}
 
 ::: code-group
 
-```bash :line-numbers {3} [cURL]
-curl
+```bash :line-numbers [cURL]
+curl \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <YOUR-TOKEN>" \
+  https://restiloc.space/api/experts/{id}
 ```
 
 :::
@@ -52,12 +76,44 @@ curl
 
 ::: code-group
 
-```json :line-numbers {3} [Example response]
-curl
+```json :line-numbers [Example response]
+{
+  "data":[
+    {
+      "id":1,
+      "lastName":"HETT",
+      "firstName":"Alizée",
+      "email":"ali.he@gmail.fr",
+      "phoneNumber":"0685256893",
+      "username":"ali.he",
+      "route":"https:\/\/restiloc.space\/api\/experts\/1",
+      "missions":[
+        {
+          "id":3,
+          "dateMission":"2023-02-06",
+          "startedAt":null,
+          "kilometersCounter":185467,
+          "nameExpertFile":"Garrett Bailey",
+          "isFinished":1,
+          "route":"https:\/\/restiloc.space\/api\/missions\/3"
+        }
+      ]
+    }
+  ]
+}
 ```
 
-```json :line-numbers {3} [Response schema]
-import type { UserConfig } from 'vitepress'
+```json :line-numbers [Response schema]
+{
+  "id":"int",
+  "lastName":"string",
+  "firstName":"string",
+  "email":"string",
+  "phoneNumber":"string",
+  "username":"string",
+  "route":"string",
+  "missions":"array"
+}
 ```
 
 :::

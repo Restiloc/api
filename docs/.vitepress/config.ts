@@ -55,18 +55,19 @@ function sidebarGuide() {
             collapsed: false,
             items: [
                 {
-                    text: "Authenticate",
+                    text: "Authentication",
                     collapsed: true,
                     items: [
                         { text: "Login", link: "/guide/auth/login" },
                         { text: "Register", link: "/guide/auth/register" },
                     ],
                 },
-                { text: "Vehicles", link: "/guide/vehicles" },
+                { text: "Models", link: "/guide/models" },
                 { text: "Experts", link: "/guide/experts" },
                 { text: "Garages", link: "/guide/garages" },
-                { text: "Models", link: "/guide/models" },
                 { text: "Reasons", link: "/guide/reasons" },
+                { text: "Vehicles", link: "/guide/vehicles" },
+                { text: "Missions", link: "/guide/missions" },
                 { text: "Expertises", link: "/guide/expertises" },
                 { text: "Prestations", link: "/guide/prestations" },
                 { text: "Unavailabilities", link: "/guide/unavailabilities" },

@@ -1,7 +1,5 @@
 # Garages
 
-With this route you can get all garages including relations.
-
 ## List all garages <Badge type="tip" text="GET"/>
 
 #### Code samples
@@ -12,8 +10,11 @@ GET /api/garages
 
 ::: code-group
 
-```bash :line-numbers {3} [cURL]
-curl
+```bash :line-numbers [cURL]
+curl \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <YOUR-TOKEN>" \
+  https://restiloc.space/api/garages
 ```
 
 :::
@@ -22,12 +23,25 @@ curl
 
 ::: code-group
 
-```json :line-numbers {3} [Example response]
-curl
-```
-
-```json :line-numbers {3} [Response schema]
-import type { UserConfig } from 'vitepress'
+```json :line-numbers [Example response]
+{
+  "data":[
+    {
+      "id":1,
+      "name":"ut ab nemo",
+      "addressNumber":"437 Kihn Ports",
+      "street":"Barton Shores",
+      "postalCode":"50169-7391",
+      "city":"Port Phyllisshire",
+      "phoneNumber":"276.733.9813",
+      "latitude":"-20.579567",
+      "longitude":"-171.901572",
+      "url":"https:\/\/restiloc.space\/api\/garages\/1",
+      "missions":[]
+    },
+    ...
+  ]
+}
 ```
 
 :::
@@ -42,8 +56,11 @@ GET /api/garages/{id}
 
 ::: code-group
 
-```bash :line-numbers {3} [cURL]
-curl
+```bash :line-numbers [cURL]
+curl \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <YOUR-TOKEN>" \
+  https://restiloc.space/api/garages/{id}
 ```
 
 :::
@@ -52,12 +69,40 @@ curl
 
 ::: code-group
 
-```json :line-numbers {3} [Example response]
-curl
+```json :line-numbers [Example response]
+{
+  "data":[
+    {
+      "id":1,
+      "name":"ut ab nemo",
+      "addressNumber":"437 Kihn Ports",
+      "street":"Barton Shores",
+      "postalCode":"50169-7391",
+      "city":"Port Phyllisshire",
+      "phoneNumber":"276.733.9813",
+      "latitude":"-20.579567",
+      "longitude":"-171.901572",
+      "url":"https:\/\/restiloc.space\/api\/garages\/1",
+      "missions":[]
+    }
+  ]
+}
 ```
 
-```json :line-numbers {3} [Response schema]
-import type { UserConfig } from 'vitepress'
+```json :line-numbers [Response schema]
+{
+  "id":"int",
+  "name":"string",
+  "addressNumber":"string",
+  "street":"string",
+  "postalCode":"string",
+  "city":"string",
+  "phoneNumber":"string",
+  "latitude":"string",
+  "longitude":"string",
+  "url":"string",
+  "missions":"array"
+}
 ```
 
 :::

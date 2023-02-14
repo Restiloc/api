@@ -1,7 +1,5 @@
 # Vehicles
 
-With this route you can get all vehicles including relations.
-
 ## List all vehicles <Badge type="tip" text="GET"/>
 
 #### Code samples
@@ -12,8 +10,11 @@ GET /api/vehicles
 
 ::: code-group
 
-```bash :line-numbers {3} [cURL]
-curl
+```bash :line-numbers [cURL]
+curl \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <YOUR-TOKEN>" \
+  https://restiloc.space/api/vehicles
 ```
 
 :::
@@ -22,12 +23,20 @@ curl
 
 ::: code-group
 
-```json :line-numbers {3} [Example response]
-curl
-```
-
-```json :line-numbers {3} [Response schema]
-import type { UserConfig } from 'vitepress'
+```json :line-numbers [Example response]
+{
+  "data": [
+    {
+      "id": 1,
+      "licencePlate": "SAJWJ0FF3F8321657",
+      "color": "Yellow",
+      "releaseYear": 2002,
+      "route": "https:\/\/restiloc.space\/api\/vehicles\/1",
+      "missions": []
+    },
+    ...
+  ]
+}
 ```
 
 :::
@@ -42,8 +51,11 @@ GET /api/vehicles/{id}
 
 ::: code-group
 
-```bash :line-numbers {3} [cURL]
-curl
+```bash :line-numbers [cURL]
+curl \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <YOUR-TOKEN>" \
+  https://restiloc.space/api/vehicles/{id}
 ```
 
 :::
@@ -52,12 +64,30 @@ curl
 
 ::: code-group
 
-```json :line-numbers {3} [Example response]
-curl
+```json :line-numbers [Example response]
+{
+  "data": [
+    {
+      "id": 1,
+      "licencePlate": "SAJWJ0FF3F8321657",
+      "color": "Yellow",
+      "releaseYear": 2002,
+      "route": "https:\/\/restiloc.space\/api\/vehicles\/1",
+      "missions": []
+    }
+  ]
+}
 ```
 
-```json :line-numbers {3} [Response schema]
-import type { UserConfig } from 'vitepress'
+```json :line-numbers [Response schema]
+{
+  "id":"int",
+  "licencePlate":"string",
+  "color":"string",
+  "releaseYear":"int",
+  "route":"string",
+  "missions":"array"
+}
 ```
 
 :::
