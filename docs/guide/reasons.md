@@ -1,7 +1,5 @@
 # Reasons
 
-With this route you can get all reasons including relations.
-
 ## List all reasons <Badge type="tip" text="GET"/>
 
 #### Code samples

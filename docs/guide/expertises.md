@@ -1,7 +1,5 @@
 # Expertises
 
-With this route you can get result of the expertises sql view including relations.
-
 ## Get expertises records <Badge type="tip" text="GET"/>
 
 #### Code samples

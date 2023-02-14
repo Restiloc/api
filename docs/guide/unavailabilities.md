@@ -1,7 +1,5 @@
 # Unavailabilities
 
-With this route you can get all unavailabilities including relations.
-
 ## List all unavailabilities <Badge type="tip" text="GET"/>
 
 #### Code samples
