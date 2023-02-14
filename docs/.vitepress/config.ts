@@ -12,7 +12,7 @@ export default defineConfig({
         },
     },
     themeConfig: {
-		logo: "https://github.com/Restiloc.png",
+        logo: "https://github.com/Restiloc.png",
         nav: nav(),
         sidebar: {
             "/guide/": sidebarGuide(),
@@ -22,30 +22,30 @@ export default defineConfig({
                 "https://github.com/Restiloc/api/docs/edit/master/docs/:path",
             text: "Edit this page on GitHub",
         },
-        socialLinks: [
-            { icon: "github", link: "https://github.com/Restiloc" }
-        ],
+        socialLinks: [{ icon: "github", link: "https://github.com/Restiloc" }],
         footer: {
             message: "MIT Licensed",
             copyright: "Copyright © 2023-present Restiloc",
-        }
+        },
     },
 });
 
 function nav() {
     return [
-			{
-				text: "Repositories",
-				collapsed: false,
-				items: [
-					{ text: "Restiloc", link: "https://github.com/Restiloc/restiloc" },
-					{ text: "REST API", link: "https://github.com/Restiloc/api" },
-					{ text: "Figma", link: "https://github.com/Restiloc/ux" },
-					{ text: "Docs", link: "https://github.com/Restiloc/docs" },
-				]
-			}
-
-		];
+        {
+            text: "Repositories",
+            collapsed: false,
+            items: [
+                {
+                    text: "Restiloc",
+                    link: "https://github.com/Restiloc/restiloc",
+                },
+                { text: "Api", link: "https://github.com/Restiloc/api" },
+                { text: "Figma", link: "https://github.com/Restiloc/ux" },
+                { text: "Docs", link: "https://github.com/Restiloc/docs" },
+            ],
+        },
+    ];
 }
 
 function sidebarGuide() {
@@ -54,7 +54,14 @@ function sidebarGuide() {
             text: "API References",
             collapsed: false,
             items: [
-                { text: "Authentication", link: "/guide/auth" },
+                {
+                    text: "Authenticate",
+                    collapsed: true,
+                    items: [
+                        { text: "Login", link: "/guide/auth/login" },
+                        { text: "Register", link: "/guide/auth/register" },
+                    ],
+                },
                 { text: "Vehicles", link: "/guide/vehicles" },
                 { text: "Experts", link: "/guide/experts" },
                 { text: "Garages", link: "/guide/garages" },
@@ -64,6 +71,6 @@ function sidebarGuide() {
                 { text: "Prestations", link: "/guide/prestations" },
                 { text: "Unavailabilities", link: "/guide/unavailabilities" },
             ],
-        }
+        },
     ];
 }

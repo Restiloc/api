@@ -1,5 +1,0 @@
-# Authentication
-
-## Login
-
-## Register

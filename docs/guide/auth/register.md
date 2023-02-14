@@ -1,13 +1,9 @@
-# Expertises
+# Register <Badge type="tip" text="POST"/>
 
-With this route you can get result of the expertises sql view including relations.
-
-## Get expertises records <Badge type="tip" text="GET"/>
-
-#### Code samples
+## Code samples
 
 ```bash
-GET /api/expertises
+POST /api/auth/register
 ```
 
 ::: code-group
@@ -18,7 +14,7 @@ curl
 
 :::
 
-#### Response
+## Response
 
 ::: code-group
 
