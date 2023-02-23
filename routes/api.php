@@ -43,6 +43,6 @@ Route::middleware('auth:sanctum')->group(function () {
         return $request->user()->load('missions');
     });
     Route::get('/me/missions', function (Request $request) {
-        return $request->user()->missions;
+        return $request->user()->missions->load('vehicle', 'expert', 'garage', 'unavailability', 'pree');
     });
 });
