@@ -42,4 +42,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', function (Request $request) {
         return $request->user()->load('missions');
     });
+    Route::get('/me/missions', function (Request $request) {
+        return $request->user()->missions;
+    });
 });
