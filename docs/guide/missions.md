@@ -32,7 +32,7 @@ curl \
       "startedAt":null,
       "kilometersCounter":186950,
       "nameExpertFile":"Ottilie Friesen",
-      "isFinished":1,
+      "isFinished":true,
       "route":"https:\/\/restiloc.space\/api\/missions\/1",
       "vehicle":{
         "id":49,
@@ -133,7 +133,7 @@ curl \
       "startedAt":null,
       "kilometersCounter":186950,
       "nameExpertFile":"Ottilie Friesen",
-      "isFinished":1,
+      "isFinished":true,
       "route":"https:\/\/restiloc.space\/api\/missions\/1",
       "vehicle":{
         "id":49,
@@ -206,7 +206,7 @@ curl \
   "startedAt":"?date",
   "kilometersCounter":"int",
   "nameExpertFile":"string",
-  "isFinished":"int",
+  "isFinished":"boolean",
   "route":"string",
   "vehicle":"array",
   "expert":"array",
