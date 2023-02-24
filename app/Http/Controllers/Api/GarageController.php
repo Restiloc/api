@@ -16,7 +16,8 @@ class GarageController extends Controller
      */
     public function index()
     {
-        return ResourcesGarage::collection(Garage::with('missions')->get());
+        $garage = ResourcesGarage::collection(Garage::with('missions')->get());
+        return response()->json($garage, 200);
     }
 
     /**
@@ -59,7 +60,12 @@ class GarageController extends Controller
      */
     public function show(Garage $garage)
     {
-        return new ResourcesGarage($garage->load('missions'));
+        if (!$garage) {
+            return response()->json(['error' => 'Garage not found.'], 404);
+        }
+
+        $garage = new ResourcesGarage($garage->load('missions'));
+        return response()->json($garage, 200);
     }
 
     /**

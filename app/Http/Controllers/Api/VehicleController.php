@@ -16,7 +16,8 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        return ResourcesVehicle::collection(Vehicle::with('model', 'missions')->get());
+        $vehicle = ResourcesVehicle::collection(Vehicle::with('model', 'missions')->get());
+        return response()->json($vehicle, 200);
     }
 
     /**
@@ -54,7 +55,12 @@ class VehicleController extends Controller
      */
     public function show(Vehicle $vehicle)
     {
-        return new ResourcesVehicle($vehicle->load('model', 'missions'));
+        if (!$vehicle) {
+            return response()->json(['error' => 'Vehicle not found.'], 404);
+        }
+
+        $vehicle = new ResourcesVehicle($vehicle->load('model', 'missions'));
+        return response()->json($vehicle, 200);
     }
 
     /**

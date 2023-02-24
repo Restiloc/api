@@ -16,6 +16,7 @@ class VehicleExpertController extends Controller
      */
     public function index()
     {
-        return ResourcesVehicleExpert::collection(VehicleExpert::with('mission')->get());
+        $vehicleExp = ResourcesVehicleExpert::collection(VehicleExpert::with('mission')->get());
+        return response()->json($vehicleExp, 200);
     }
 }

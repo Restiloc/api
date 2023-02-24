@@ -16,7 +16,8 @@ class UnavailabilityController extends Controller
      */
     public function index()
     {
-        return ResourcesUnavailability::collection(Unavailability::with('reason', 'missions')->get());
+        $unavailability = ResourcesUnavailability::collection(Unavailability::with('reason', 'missions')->get());
+        return response()->json($unavailability, 200);
     }
 
     /**
@@ -52,7 +53,12 @@ class UnavailabilityController extends Controller
      */
     public function show(Unavailability $unavailability)
     {
-        return new ResourcesUnavailability($unavailability->load('reason', 'missions'));
+        if (!$unavailability) {
+            return response()->json(['error' => 'Unavailability not found.'], 404);
+        }
+
+        $unavailability = new ResourcesUnavailability($unavailability->load('reason', 'missions'));
+        return response()->json($unavailability, 200);
     }
 
     /**

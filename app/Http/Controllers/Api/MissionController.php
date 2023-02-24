@@ -16,7 +16,8 @@ class MissionController extends Controller
      */
     public function index()
     {
-        return ResourcesMission::collection(Mission::with('vehicle', 'expert', 'garage', 'unavailability', 'pree')->get());
+        $mission = ResourcesMission::collection(Mission::with('vehicle', 'expert', 'garage', 'unavailability', 'pree')->get());
+        return response()->json($mission, 200);
     }
 
     /**
@@ -56,7 +57,12 @@ class MissionController extends Controller
      */
     public function show(Mission $mission)
     {
-        return new ResourcesMission($mission->load('vehicle', 'expert', 'garage', 'unavailability', 'pree'));
+        if (!$mission) {
+            return response()->json(['error' => 'Mission not found.'], 404);
+        }
+
+        $mission = new ResourcesMission($mission->load('vehicle', 'expert', 'garage', 'unavailability', 'pree'));
+        return response()->json($mission, 200);
     }
 
     /**
