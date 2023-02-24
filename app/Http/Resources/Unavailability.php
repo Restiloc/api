@@ -16,7 +16,7 @@ class Unavailability extends JsonResource
     {
         return [
             'id' => $this->id,
-            'customerResponsible' => $this->customerResponsible,
+            'customerResponsible' => $this->customerResponsible ? true : false,
             'route' => route('unavailabilities.index') . "/" . $this->id,
             'missions' => Mission::collection($this->whenLoaded('missions')),
             'reason' => new Reason($this->whenLoaded('reason')),

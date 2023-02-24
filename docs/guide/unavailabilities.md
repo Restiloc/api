@@ -28,7 +28,7 @@ curl \
   "data":[
     {
       "id":1,
-      "customerResponsible":1,
+      "customerResponsible":true,
       "route":"https:\/\/restiloc.space\/api\/unavailabilities\/1",
       "missions":[
         {
@@ -82,7 +82,7 @@ curl \
   "data":[
     {
       "id":1,
-      "customerResponsible":1,
+      "customerResponsible":true,
       "route":"https:\/\/restiloc.space\/api\/unavailabilities\/1",
       "missions":[
         {
@@ -108,7 +108,7 @@ curl \
 ```json :line-numbers [Response schema]
 {
     "id":"int",
-    "customerResponsible":"int",
+    "customerResponsible":"boolean",
     "route":"string",
     "missions":"array",
     "reason":"array"
