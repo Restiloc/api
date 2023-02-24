@@ -16,7 +16,8 @@ class PreeController extends Controller
      */
     public function index()
     {
-        return ResourcesPree::collection(Pree::with('mission')->get());
+        $pree = ResourcesPree::collection(Pree::with('mission')->get());
+        return response()->json($pree, 200);
     }
 
     /**
@@ -55,7 +56,12 @@ class PreeController extends Controller
      */
     public function show(Pree $pree)
     {
-        return new ResourcesPree($pree->load('mission'));
+        if (!$pree) {
+            return response()->json(['error' => 'Performance not found.'], 404);
+        }
+
+        $pree = new ResourcesPree($pree->load('mission'));
+        return response()->json($pree, 200);
     }
 
     /**

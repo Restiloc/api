@@ -16,7 +16,8 @@ class ExpertController extends Controller
      */
     public function index()
     {
-        return ResourcesExpert::collection(Expert::with('missions')->get());
+        $expert = ResourcesExpert::collection(Expert::with('missions')->get());
+        return response()->json($expert, 200);
     }
 
     /**
@@ -58,7 +59,12 @@ class ExpertController extends Controller
      */
     public function show(Expert $expert)
     {
-        return new ResourcesExpert($expert->load('missions'));
+        if (!$expert) {
+            return response()->json(['error' => 'Expert not found.'], 404);
+        }
+
+        $expert = new ResourcesExpert($expert->load('missions'));
+        return response()->json($expert, 200);
     }
 
     /**

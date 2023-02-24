@@ -16,7 +16,8 @@ class ReasonController extends Controller
      */
     public function index()
     {
-        return ResourcesReason::collection(Reason::with('unavailabilities')->get());
+        $reason = ResourcesReason::collection(Reason::with('unavailabilities')->get());
+        return response()->json($reason, 200);
     }
 
     /**
@@ -52,7 +53,12 @@ class ReasonController extends Controller
      */
     public function show(Reason $reason)
     {
-        return new ResourcesReason($reason->load('unavailabilities'));
+        if (!$reason) {
+            return response()->json(['message' => 'Reason not found.'], 404);
+        }
+
+        $reason = new ResourcesReason($reason->load('unavailabilities'));
+        return response()->json($reason, 200);
     }
 
     /**
