@@ -20,7 +20,7 @@ class Mission extends JsonResource
             'startedAt' => $this->startedAt,
             'kilometersCounter' => $this->kilometersCounter,
             'nameExpertFile' => $this->nameExpertFile,
-            'isFinished' => $this->isFinished,
+            'isFinished' => $this->isFinished ? true : false,
             'route' => route('missions.index') . "/" . $this->id,
             'vehicle' => new Vehicle($this->whenLoaded('vehicle')),
             'expert' => new Expert($this->whenLoaded('expert')),
