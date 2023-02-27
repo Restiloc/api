@@ -16,7 +16,7 @@ class MissionController extends Controller
      */
     public function index()
     {
-        $mission = ResourcesMission::collection(Mission::with('vehicle', 'expert', 'garage', 'unavailability', 'pree')->get());
+        $mission = ResourcesMission::collection(Mission::with('vehicle', 'expert', 'garage', 'client', 'unavailability', 'pree')->get());
         return response()->json($mission, 200);
     }
 
@@ -32,7 +32,8 @@ class MissionController extends Controller
             'dateMission' => 'required|date',
             'startedAt' => 'required|time',
             'kilometersCounter' => 'required|bigInteger',
-            'nameExpertFile' => 'required|string',
+            'type' => 'required|string',
+            'folder' => 'required|string',
             'isFinished' => 'required|boolean',
         ]);
 
@@ -61,7 +62,7 @@ class MissionController extends Controller
             return response()->json(['error' => 'Mission not found.'], 404);
         }
 
-        $mission = new ResourcesMission($mission->load('vehicle', 'expert', 'garage', 'unavailability', 'pree'));
+        $mission = new ResourcesMission($mission->load('vehicle', 'expert', 'garage', 'client', 'unavailability', 'pree'));
         return response()->json($mission, 200);
     }
 
@@ -78,7 +79,8 @@ class MissionController extends Controller
             'dateMission' => 'required|date',
             'startedAt' => 'required|time',
             'kilometersCounter' => 'required|bigInteger',
-            'nameExpertFile' => 'required|string',
+            'type' => 'required|string',
+            'folder' => 'required|string',
             'isFinished' => 'required|boolean',
         ]);
 
