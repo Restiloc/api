@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Client;
 use App\Models\Pree;
 use App\Models\Expert;
 use App\Models\Garage;
@@ -130,6 +131,30 @@ class DatabaseSeeder extends Seeder
 
         $progressBar->finish();
 
+        // Seed the clients
+        $output = new ConsoleOutput();
+        $this->command->comment("\n\nSeeding clients in progress...\n");
+
+        /**
+         * Make fake clients
+         */
+        $nbClients = 50;
+
+        $progressBar = new ProgressBar($output, $nbClients);
+
+        $progressBar->start();
+
+        for (
+            $i = 0;
+            $i < $nbClients;
+            $i++
+        ) {
+            Client::factory()->create();
+            $progressBar->advance();
+        }
+
+        $progressBar->finish();
+
         // Seed the reasons
         $output = new ConsoleOutput();
         $this->command->comment("\n\nSeeding reasons in progress...\n");
@@ -209,13 +234,13 @@ class DatabaseSeeder extends Seeder
         /**
          * Make fake pree
          */
-        $progressBar = new ProgressBar($output, 50);
+        $progressBar = new ProgressBar($output, 20);
 
         $progressBar->start();
 
         for (
             $i = 0;
-            $i < 50;
+            $i < 20;
             $i++
         ) {
             Pree::factory()->create();
