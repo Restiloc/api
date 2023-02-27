@@ -17,8 +17,8 @@ class GarageFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->words(3, true),
-            'addressNumber' => fake()->streetAddress(),
+            'name' => fake()->words(2, true) . ' Garage',
+            'addressNumber' => fake()->numberBetween(1, 400),
             'street' => fake()->streetName(),
             'postalCode' => fake()->postcode(),
             'city' => fake()->city(),
