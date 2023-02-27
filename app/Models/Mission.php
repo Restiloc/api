@@ -18,7 +18,18 @@ class Mission extends Model
         'dateMission',
         'startedAt',
         'kilometersCounter',
-        'nameExpertFile',
+        'folder',
+        'type',
+        'isFinished',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'isFinished' => 'boolean',
     ];
 
     /**
@@ -49,6 +60,16 @@ class Mission extends Model
     public function garage()
     {
         return $this->hasOne(Garage::class, 'id', 'garage_id');
+    }
+
+    /**
+     * Get the client related to this mission.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function client()
+    {
+        return $this->hasOne(Client::class, 'id', 'client_id');
     }
 
     /**
