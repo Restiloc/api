@@ -29,9 +29,10 @@ curl \
     {
       "id":1,
       "dateMission":"2023-02-16",
-      "startedAt":null,
+      "startedAt":"10:06:15",
       "kilometersCounter":186950,
-      "nameExpertFile":"Ottilie Friesen",
+      "folder":"VTT4K",
+      "type":"Garage",
       "isFinished":true,
       "route":"https:\/\/restiloc.space\/api\/missions\/1",
       "vehicle":{
@@ -52,8 +53,8 @@ curl \
       },
       "garage":{
         "id":25,
-        "name":"est tempora aut",
-        "addressNumber":"4371 Savion Island Suite 041",
+        "name":"Rerum Quisquam Garage",
+        "addressNumber":"371",
         "street":"Lonnie Wall",
         "postalCode":"04579",
         "city":"Zoramouth",
@@ -64,7 +65,7 @@ curl \
       },
       "unavailability":{
         "id":4,
-        "customerResponsible":1,
+        "customerResponsible":true,
         "route":"https:\/\/restiloc.space\/api\/unavailabilities\/4"
       },
       "pree":[
@@ -130,9 +131,10 @@ curl \
     {
       "id":1,
       "dateMission":"2023-02-16",
-      "startedAt":null,
+      "startedAt":"10:06:15",
       "kilometersCounter":186950,
-      "nameExpertFile":"Ottilie Friesen",
+      "folder":"VTT4K",
+      "type":"Garage",
       "isFinished":true,
       "route":"https:\/\/restiloc.space\/api\/missions\/1",
       "vehicle":{
@@ -153,8 +155,8 @@ curl \
       },
       "garage":{
         "id":25,
-        "name":"est tempora aut",
-        "addressNumber":"4371 Savion Island Suite 041",
+        "name":"Rerum Quisquam Garage",
+        "addressNumber":"371",
         "street":"Lonnie Wall",
         "postalCode":"04579",
         "city":"Zoramouth",
@@ -165,7 +167,7 @@ curl \
       },
       "unavailability":{
         "id":4,
-        "customerResponsible":1,
+        "customerResponsible":true,
         "route":"https:\/\/restiloc.space\/api\/unavailabilities\/4"
       },
       "pree":[
@@ -205,7 +207,8 @@ curl \
   "dateMission":"date",
   "startedAt":"?date",
   "kilometersCounter":"int",
-  "nameExpertFile":"string",
+  "folder":"string",
+  "type":"string",
   "isFinished":"boolean",
   "route":"string",
   "vehicle":"array",

@@ -36,10 +36,11 @@ curl \
       "mission":{
         "id":11,
         "dateMission":"2023-02-23",
-        "startedAt":null,
+        "startedAt":"18:22:41",
         "kilometersCounter":80455,
-        "nameExpertFile":"Deanna Krajcik Sr.",
-        "isFinished":0,
+        "folder":"DKJ67",
+        "type":"Garage",
+        "isFinished":false,
         "route":"https:\/\/restiloc.space\/api\/missions\/11"
       }
     },
@@ -86,10 +87,11 @@ curl \
       "mission":{
         "id":11,
         "dateMission":"2023-02-23",
-        "startedAt":null,
+        "startedAt":"18:22:41",
         "kilometersCounter":80455,
-        "nameExpertFile":"Deanna Krajcik Sr.",
-        "isFinished":0,
+        "folder":"DKJ67",
+        "type":"Garage",
+        "isFinished":false,
         "route":"https:\/\/restiloc.space\/api\/missions\/11"
       }
     }

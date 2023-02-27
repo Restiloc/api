@@ -66,27 +66,27 @@ curl \
 
 ```json :line-numbers [Example response]
 {
-  "data": [
-    {
-      "id": 1,
-      "licencePlate": "SAJWJ0FF3F8321657",
-      "color": "Yellow",
-      "releaseYear": 2002,
-      "route": "https:\/\/restiloc.space\/api\/vehicles\/1",
-      "missions": []
-    }
-  ]
+    "data": [
+        {
+            "id": 1,
+            "licencePlate": "SAJWJ0FF3F8321657",
+            "color": "Yellow",
+            "releaseYear": 2002,
+            "route": "https://restiloc.space/api/vehicles/1",
+            "missions": []
+        }
+    ]
 }
 ```
 
 ```json :line-numbers [Response schema]
 {
-  "id":"int",
-  "licencePlate":"string",
-  "color":"string",
-  "releaseYear":"int",
-  "route":"string",
-  "missions":"array"
+    "id": "int",
+    "licencePlate": "string",
+    "color": "string",
+    "releaseYear": "int",
+    "route": "string",
+    "missions": "array"
 }
 ```
 

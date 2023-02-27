@@ -28,8 +28,8 @@ curl \
   "data":[
     {
       "id":1,
-      "name":"ut ab nemo",
-      "addressNumber":"437 Kihn Ports",
+      "name":"Ut Ab Garage",
+      "addressNumber":"337",
       "street":"Barton Shores",
       "postalCode":"50169-7391",
       "city":"Port Phyllisshire",
@@ -74,8 +74,8 @@ curl \
   "data":[
     {
       "id":1,
-      "name":"ut ab nemo",
-      "addressNumber":"437 Kihn Ports",
+      "name":"Ut Ab Garage",
+      "addressNumber":"337",
       "street":"Barton Shores",
       "postalCode":"50169-7391",
       "city":"Port Phyllisshire",
@@ -93,7 +93,7 @@ curl \
 {
   "id":"int",
   "name":"string",
-  "addressNumber":"string",
+  "addressNumber":"int",
   "street":"string",
   "postalCode":"string",
   "city":"string",
