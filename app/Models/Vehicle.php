@@ -31,6 +31,16 @@ class Vehicle extends Model
     }
 
     /**
+     * Get the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id', 'id');
+    }
+
+    /**
      * Get the missions for the Vehicle.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
