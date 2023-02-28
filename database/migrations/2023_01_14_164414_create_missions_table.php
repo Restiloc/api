@@ -29,9 +29,11 @@ return new class extends Migration
                 ->constrained('experts')
                 ->onDelete('no action');
             $table->foreignId('garage_id')
+                ->nullable()
                 ->constrained('garages')
                 ->onDelete('no action');
             $table->foreignId('client_id')
+                ->nullable()
                 ->constrained('clients')
                 ->onDelete('no action');
             $table->timestamps();

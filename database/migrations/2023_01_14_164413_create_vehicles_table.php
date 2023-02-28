@@ -22,6 +22,9 @@ return new class extends Migration
                 ->nullable()
                 ->constrained("vehicle_models")
                 ->onDelete('set null');
+            $table->foreignId('company_id')
+                ->constrained('companies')
+                ->onDelete('no action');
             $table->timestamps();
         });
     }
