@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Client;
+use App\Models\Company;
 use App\Models\Pree;
 use App\Models\Expert;
 use App\Models\Garage;
@@ -26,9 +27,33 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // Seed the companies
+        $output = new ConsoleOutput();
+        $this->command->comment("Seeding companies in progress...\n");
+
+        /**
+         * Make fake companies
+         */
+        $nbCompanies = 10;
+
+        $progressBar = new ProgressBar($output, $nbCompanies);
+
+        $progressBar->start();
+
+        for (
+            $i = 0;
+            $i < $nbCompanies;
+            $i++
+        ) {
+            Company::factory()->create();
+            $progressBar->advance();
+        }
+
+        $progressBar->finish();
+
         // Seed the vehicles and models
         $output = new ConsoleOutput();
-        $this->command->comment("Seeding the vehicles and models in progress...\n");
+        $this->command->comment("\n\nSeeding the vehicles and models in progress...\n");
 
         /**
          * Make fake vehicles and models
@@ -66,6 +91,7 @@ class DatabaseSeeder extends Seeder
                     'licencePlate' => $car['car_vin'],
                     'color' => $car['car_color'],
                     'releaseYear' => $car['car_model_year'],
+                    'company_id' => Company::inRandomOrder()->first()->id,
                     'vehicle_model_id' => VehicleModel::where([
                         ['label', $car['car_model']],
                         ['brand', $car['car']],
@@ -190,19 +216,22 @@ class DatabaseSeeder extends Seeder
         $progressBar->start();
 
         for (
-            $i = 0;
-            $i < 10;
+            $i = 1;
+            $i < 15;
             $i++
         ) {
-            Mission::factory()->create();
+            $mission = Mission::factory()->create();
+
+            if ($mission->type === 'Garage') {
+                $mission->garage_id = Garage::all()->random()->id;
+                $mission->save();
+            } elseif ($mission->type === 'Client') {
+                $mission->client_id = Client::all()->random()->id;
+                $mission->save();
+            }
+
             $progressBar->advance();
         }
-
-        Mission::factory(5)->create([
-            'isFinished' => false,
-        ]);
-
-        $progressBar->advance(5);
 
         $progressBar->finish();
 
@@ -234,13 +263,13 @@ class DatabaseSeeder extends Seeder
         /**
          * Make fake pree
          */
-        $progressBar = new ProgressBar($output, 20);
+        $progressBar = new ProgressBar($output, 10);
 
         $progressBar->start();
 
         for (
             $i = 0;
-            $i < 20;
+            $i < 10;
             $i++
         ) {
             Pree::factory()->create();
