@@ -45,6 +45,6 @@ Route::middleware('auth:sanctum')->group(function () {
         return $request->user()->load('missions');
     });
     Route::get('/me/missions', function (Request $request) {
-        return $request->user()->missions->load('vehicle', 'expert', 'garage', 'client', 'unavailability', 'pree')->makeHidden(['vehicle_id', 'expert_id', 'garage_id', 'client_id']);
+        return $request->user()->missions->load('vehicle', 'vehicle.model', 'expert', 'garage', 'client', 'unavailability', 'pree')->makeHidden(['vehicle_id', 'expert_id', 'garage_id', 'client_id']);
     });
 });
