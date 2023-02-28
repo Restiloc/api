@@ -2,11 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Models\Client;
 use App\Models\Expert;
-use App\Models\Garage;
 use App\Models\Vehicle;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Carbon\Carbon;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Missions>
@@ -21,16 +20,16 @@ class MissionFactory extends Factory
     public function definition()
     {
         return [
-            'dateMission' => now()->addDays(fake()->numberBetween(0, 30)),
-            'startedAt' => now()->addHours(fake()->numberBetween(0, 23))->addMinutes(fake()->numberBetween(0, 59)),
+            'dateMission' => Carbon::create(2023, rand(0, 12), rand(0, 31), null, null, null)->toDateTimeString(),
+            'startedAt' => Carbon::create(null, null, null, rand(8, 17), rand(0, 59), rand(0, 59))->toDateTimeString(),
             'kilometersCounter' => fake()->numberBetween(1000, 200000),
             'folder' => fake()->regexify('[A-Z0-9]{5}'), // génère un nom alphanumérique de 5 caractères,
             'type' => fake()->randomElement(['Garage', 'Client']),
             'isFinished' => true,
             'vehicle_id' => Vehicle::all()->random()->id,
             'expert_id' => Expert::all()->random()->id,
-            'garage_id' => Garage::all()->random()->id,
-            'client_id' => Client::all()->random()->id,
+            'garage_id' => null,
+            'client_id' => null,
         ];
     }
 }
