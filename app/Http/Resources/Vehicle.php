@@ -21,6 +21,7 @@ class Vehicle extends JsonResource
             'releaseYear' => $this->releaseYear,
             'route' => route('vehicles.index') . "/" . $this->id,
             'missions' => Mission::collection($this->whenLoaded('missions')),
+            'model' => new VehicleModel($this->whenLoaded('model')),
         ];
     }
 }

@@ -65,6 +65,7 @@ function sidebarGuide() {
                 },
                 { text: "Models", link: "/guide/models" },
                 { text: "Experts", link: "/guide/experts" },
+                { text: "Clients", link: "/guide/clients" },
                 { text: "Garages", link: "/guide/garages" },
                 { text: "Reasons", link: "/guide/reasons" },
                 { text: "Vehicles", link: "/guide/vehicles" },

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Sanctum\PersonalAccessToken;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\PreeController;
+use App\Http\Controllers\Api\ClientController;
 use App\Http\Controllers\Api\ExpertController;
 use App\Http\Controllers\Api\GarageController;
 use App\Http\Controllers\Api\ReasonController;
@@ -32,6 +33,7 @@ Route::post('/auth/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('experts', ExpertController::class);
     Route::apiResource('garages', GarageController::class);
+    Route::apiResource('clients', ClientController::class);
     Route::apiResource('missions', MissionController::class);
     Route::apiResource('reasons', ReasonController::class);
     Route::apiResource('unavailabilities', UnavailabilityController::class);
@@ -43,6 +45,6 @@ Route::middleware('auth:sanctum')->group(function () {
         return $request->user()->load('missions');
     });
     Route::get('/me/missions', function (Request $request) {
-        return $request->user()->missions->load('vehicle', 'expert', 'garage', 'unavailability', 'pree');
+        return $request->user()->missions->load('vehicle', 'vehicle.model', 'expert', 'garage', 'client', 'unavailability', 'pree')->makeHidden(['vehicle_id', 'expert_id', 'garage_id', 'client_id']);
     });
 });

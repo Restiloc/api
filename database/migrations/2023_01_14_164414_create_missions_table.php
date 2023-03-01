@@ -17,9 +17,10 @@ return new class extends Migration
         Schema::create('missions', function (Blueprint $table) {
             $table->id();
             $table->date("dateMission");
-            $table->time("startedAt")->nullable();
+            $table->time("startedAt");
             $table->bigInteger("kilometersCounter");
-            $table->string("nameExpertFile");
+            $table->string("type");
+            $table->string("folder", 5)->unique();
             $table->boolean("isFinished")->default(false);
             $table->foreignId('vehicle_id')
                 ->constrained('vehicles')
@@ -28,7 +29,12 @@ return new class extends Migration
                 ->constrained('experts')
                 ->onDelete('no action');
             $table->foreignId('garage_id')
+                ->nullable()
                 ->constrained('garages')
+                ->onDelete('no action');
+            $table->foreignId('client_id')
+                ->nullable()
+                ->constrained('clients')
                 ->onDelete('no action');
             $table->timestamps();
         });

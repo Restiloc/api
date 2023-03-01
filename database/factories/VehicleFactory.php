@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\VehicleModel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,7 +21,7 @@ class VehicleFactory extends Factory
             'licencePlate' => fake()->word(),
             'color' => fake()->word(),
             'releaseYear' => fake()->year(),
-            'vehicle_model_id' => 1,
+            'vehicle_model_id' => VehicleModel::all()->random()->id,
         ];
     }
 }

@@ -13,15 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('vehicles', function (Blueprint $table) {
+        Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->string("licencePlate")->unique();
-            $table->string("color");
-            $table->integer("releaseYear");
-            $table->foreignId("vehicle_model_id")
-                ->nullable()
-                ->constrained("vehicle_models")
-                ->onDelete('set null');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -29,10 +23,10 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      *
-     * @return void
+     *  @return void
      */
     public function down()
     {
-        Schema::dropIfExists('vehicles');
+        Schema::dropIfExists('companies');
     }
 };

@@ -33,12 +33,12 @@ curl \
       "unavailabilities":[
         {
           "id":4,
-          "customerResponsible":1,
+          "customerResponsible":true,
           "route":"https:\/\/restiloc.space\/api\/unavailabilities\/4"
         },
         {
           "id":8,
-          "customerResponsible":1,
+          "customerResponsible":true,
           "route":"https:\/\/restiloc.space\/api\/unavailabilities\/8"
         }
       ]
@@ -50,17 +50,17 @@ curl \
       "unavailabilities":[
         {
           "id":5,
-          "customerResponsible":0,
+          "customerResponsible":false,
           "route":"https:\/\/restiloc.space\/api\/unavailabilities\/5"
         },
         {
           "id":7,
-          "customerResponsible":0,
+          "customerResponsible":false,
           "route":"https:\/\/restiloc.space\/api\/unavailabilities\/7"
         },
         {
           "id":10,
-          "customerResponsible":1,
+          "customerResponsible":true,
           "route":"https:\/\/restiloc.space\/api\/unavailabilities\/10"
         }
       ]
@@ -72,17 +72,17 @@ curl \
       "unavailabilities":[
         {
           "id":1,
-          "customerResponsible":1,
+          "customerResponsible":true,
           "route":"https:\/\/restiloc.space\/api\/unavailabilities\/1"
         },
         {
           "id":2,
-          "customerResponsible":0,
+          "customerResponsible":false,
           "route":"https:\/\/restiloc.space\/api\/unavailabilities\/2"
         },
         {
           "id":9,
-          "customerResponsible":0,
+          "customerResponsible":false,
           "route":"https:\/\/restiloc.space\/api\/unavailabilities\/9"
         }
       ]
@@ -94,12 +94,12 @@ curl \
       "unavailabilities":[
         {
           "id":3,
-          "customerResponsible":1,
+          "customerResponsible":true,
           "route":"https:\/\/restiloc.space\/api\/unavailabilities\/3"
         },
         {
           "id":6,
-          "customerResponsible":0,
+          "customerResponsible":false,
           "route":"https:\/\/restiloc.space\/api\/unavailabilities\/6"
         }
       ]
@@ -143,17 +143,17 @@ curl \
       "unavailabilities":[
         {
           "id":5,
-          "customerResponsible":0,
+          "customerResponsible":false,
           "route":"https:\/\/restiloc.space\/api\/unavailabilities\/5"
         },
         {
           "id":7,
-          "customerResponsible":0,
+          "customerResponsible":false,
           "route":"https:\/\/restiloc.space\/api\/unavailabilities\/7"
         },
         {
           "id":10,
-          "customerResponsible":1,
+          "customerResponsible":true,
           "route":"https:\/\/restiloc.space\/api\/unavailabilities\/10"
         }
       ]

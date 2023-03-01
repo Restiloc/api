@@ -19,6 +19,15 @@ class Unavailability extends Model
     ];
 
     /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'customerResponsible' => 'boolean',
+    ];
+
+    /**
      * Get the reason for this Unavailability.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

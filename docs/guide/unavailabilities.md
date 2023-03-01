@@ -34,9 +34,10 @@ curl \
         {
           "id":3,
           "dateMission":"2023-02-06",
-          "startedAt":null,
+          "startedAt":"14:25:35",
           "kilometersCounter":185467,
-          "nameExpertFile":"Garrett Bailey",
+          "folder":"GBLY6",
+          "type":"Client",
           "isFinished":1,
           "route":"https:\/\/restiloc.space\/api\/missions\/3"
         }
@@ -88,9 +89,10 @@ curl \
         {
           "id":3,
           "dateMission":"2023-02-06",
-          "startedAt":null,
+          "startedAt":"14:25:35",
           "kilometersCounter":185467,
-          "nameExpertFile":"Garrett Bailey",
+          "folder":"GBLY6",
+          "type":"Client",
           "isFinished":1,
           "route":"https:\/\/restiloc.space\/api\/missions\/3"
         }
