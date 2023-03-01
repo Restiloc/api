@@ -30,6 +30,26 @@ return new class extends Migration
             'username' => "ali.he",
             'password' => 'alizee123',
         ]);
+
+        Expert::create([
+            'lastName' => "SACCO",
+            'firstName' => "Vladi",
+            'email' => "sac.vla@gmail.fr",
+            'email_verified_at' => now(),
+            'phoneNumber' => "0685258852",
+            'username' => "vla.sac",
+            'password' => 'vladi123',
+        ]);
+
+        Expert::create([
+            'lastName' => "HENRY",
+            'firstName' => "Alexis",
+            'email' => "hen.ale@gmail.fr",
+            'email_verified_at' => now(),
+            'phoneNumber' => "0685258965",
+            'username' => "ale.hen",
+            'password' => 'alexis123',
+        ]);
     }
 
     /**
