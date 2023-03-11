@@ -20,10 +20,11 @@ class MissionFactory extends Factory
     public function definition()
     {
         return [
-            'dateMission' => Carbon::create(2023, rand(0, 12), rand(0, 31), null, null, null)->toDateTimeString(),
+            'dateMission' => Carbon::create(2023, rand(1, 12), rand(1, 31), null, null, null)->toDateTimeString(),
             'startedAt' => Carbon::create(null, null, null, rand(8, 17), rand(0, 59), rand(0, 59))->toDateTimeString(),
-            'kilometersCounter' => fake()->numberBetween(1000, 200000),
+            'kilometersCounter' => fake()->numberBetween(1000, 300000),
             'folder' => fake()->regexify('[A-Z0-9]{5}'), // génère un nom alphanumérique de 5 caractères,
+            // Possibilité de création d'une table type et renvoyer le type_id
             'type' => fake()->randomElement(['Garage', 'Client']),
             'isFinished' => true,
             'vehicle_id' => Vehicle::all()->random()->id,

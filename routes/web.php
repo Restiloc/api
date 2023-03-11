@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\TestController;
+use App\Models\Client;
+use App\Http\Resources\Client as ResourcesClient;
+use App\Models\Garage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +20,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('landing-page');
 });
-// Route::get('/test', [TestController::class, 'index']);

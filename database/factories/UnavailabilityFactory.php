@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Mission;
+use App\Models\Reason;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,8 +20,8 @@ class UnavailabilityFactory extends Factory
     {
         return [
             'customerResponsible' => fake()->boolean(),
-            'reason_id' => random_int(1, 4),
-            'mission_id' => random_int(1, 4)
+            'reason_id' => Reason::all()->random()->id,
+            'mission_id' => Mission::all()->random()->id,
         ];
     }
 }

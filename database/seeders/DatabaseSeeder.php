@@ -18,7 +18,13 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 
 class DatabaseSeeder extends Seeder
 {
-    protected $output;
+    private int $nbCompanies = 5;
+    private int $nbVehicles = 15;
+    private int $nbGarages = 5;
+    private int $nbClients = 5;
+    private int $nbMissions = 50;
+    private int $nbUnavailabilities = 5;
+    private int $nbPree = 5;
 
     /**
      * Seed the application's database.
@@ -34,7 +40,7 @@ class DatabaseSeeder extends Seeder
         /**
          * Make fake companies
          */
-        $nbCompanies = 10;
+        $nbCompanies = $this->nbCompanies;
 
         $progressBar = new ProgressBar($output, $nbCompanies);
 
@@ -58,16 +64,16 @@ class DatabaseSeeder extends Seeder
         /**
          * Make fake vehicles and models
          */
-        $limit = 49;
+        $nbVehicles = $this->nbVehicles;
 
         $cars = json_decode(file_get_contents(env('CARS_API_URL')), true)['cars'];
 
-        $progressBar = new ProgressBar($output, $limit);
+        $progressBar = new ProgressBar($output, $nbVehicles);
 
         $progressBar->start();
 
         foreach ($cars as $key => $car) {
-            if ($key > $limit)
+            if ($key > $nbVehicles)
                 break;
 
             /**
@@ -104,35 +110,6 @@ class DatabaseSeeder extends Seeder
 
         $progressBar->finish();
 
-        // Seed the experts
-        $output = new ConsoleOutput();
-        $this->command->comment("\n\nSeeding experts in progress...\n");
-
-        /**
-         * Make fake experts
-         */
-        $nbExperts = 20;
-
-        $progressBar = new ProgressBar($output, $nbExperts);
-
-        $progressBar->start();
-
-        Expert::factory()->create([
-            'username' => 'admin123',
-            'password' => 'password',
-        ]);
-
-        for (
-            $i = 0;
-            $i < $nbExperts;
-            $i++
-        ) {
-            Expert::factory()->create();
-            $progressBar->advance();
-        }
-
-        $progressBar->finish();
-
         // Seed the garages
         $output = new ConsoleOutput();
         $this->command->comment("\n\nSeeding garages in progress...\n");
@@ -140,7 +117,7 @@ class DatabaseSeeder extends Seeder
         /**
          * Make fake garages
          */
-        $nbGarages = 100;
+        $nbGarages = $this->nbGarages;
 
         $progressBar = new ProgressBar($output, $nbGarages);
 
@@ -164,7 +141,7 @@ class DatabaseSeeder extends Seeder
         /**
          * Make fake clients
          */
-        $nbClients = 50;
+        $nbClients = $this->nbClients;
 
         $progressBar = new ProgressBar($output, $nbClients);
 
@@ -211,24 +188,25 @@ class DatabaseSeeder extends Seeder
         /**
          * Make fake missions
          */
-        $progressBar = new ProgressBar($output, 15);
+        $nbMissions = $this->nbMissions;
+
+        $progressBar = new ProgressBar($output, $nbMissions);
 
         $progressBar->start();
 
         for (
-            $i = 1;
-            $i < 15;
+            $i = 0;
+            $i < $nbMissions;
             $i++
         ) {
             $mission = Mission::factory()->create();
 
             if ($mission->type === 'Garage') {
                 $mission->garage_id = Garage::all()->random()->id;
-                $mission->save();
             } elseif ($mission->type === 'Client') {
                 $mission->client_id = Client::all()->random()->id;
-                $mission->save();
             }
+            $mission->save();
 
             $progressBar->advance();
         }
@@ -241,13 +219,15 @@ class DatabaseSeeder extends Seeder
         /**
          * Make fake unavailabilities
          */
-        $progressBar = new ProgressBar($output, 10);
+        $nbUnavailabilities = $this->nbUnavailabilities;
+
+        $progressBar = new ProgressBar($output, $nbUnavailabilities);
 
         $progressBar->start();
 
         for (
             $i = 0;
-            $i < 10;
+            $i < $nbUnavailabilities;
             $i++
         ) {
             Unavailability::factory()->create();
@@ -263,13 +243,15 @@ class DatabaseSeeder extends Seeder
         /**
          * Make fake pree
          */
-        $progressBar = new ProgressBar($output, 10);
+        $nbPree = $this->nbPree;
+
+        $progressBar = new ProgressBar($output, $nbPree);
 
         $progressBar->start();
 
         for (
             $i = 0;
-            $i < 10;
+            $i < $nbPree;
             $i++
         ) {
             Pree::factory()->create();

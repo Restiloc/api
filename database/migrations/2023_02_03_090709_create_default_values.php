@@ -28,7 +28,7 @@ return new class extends Migration
             'email_verified_at' => now(),
             'phoneNumber' => "0685256893",
             'username' => "ali.he",
-            'password' => 'alizee123',
+            'password' => 'password123',
         ]);
 
         Expert::create([
@@ -38,7 +38,7 @@ return new class extends Migration
             'email_verified_at' => now(),
             'phoneNumber' => "0685258852",
             'username' => "vla.sac",
-            'password' => 'vladi123',
+            'password' => 'password123',
         ]);
 
         Expert::create([
@@ -48,7 +48,7 @@ return new class extends Migration
             'email_verified_at' => now(),
             'phoneNumber' => "0685258965",
             'username' => "ale.hen",
-            'password' => 'alexis123',
+            'password' => 'password123',
         ]);
     }
 

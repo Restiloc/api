@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Company;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Vehicle extends JsonResource
@@ -22,6 +23,7 @@ class Vehicle extends JsonResource
             'route' => route('vehicles.index') . "/" . $this->id,
             'missions' => Mission::collection($this->whenLoaded('missions')),
             'model' => new VehicleModel($this->whenLoaded('model')),
+            'company' => $this->company
         ];
     }
 }
