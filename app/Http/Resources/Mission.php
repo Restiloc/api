@@ -23,7 +23,7 @@ class Mission extends JsonResource
             'type' => $this->type,
             'isFinished' => $this->isFinished,
             'route' => route('missions.index') . "/" . $this->id,
-            'vehicle' => new Vehicle($this->whenLoaded('vehicle') ?? $this->whenLoaded('vehicle')->load('model')),
+            'vehicle' => new Vehicle($this->whenLoaded('vehicle') ? $this->whenLoaded('vehicle')->load('model') : $this->whenLoaded('vehicle')),
             'expert' => new Expert($this->whenLoaded('expert')),
             'garage' => new Garage($this->whenLoaded('garage')),
             'client' => new Client($this->whenLoaded('client')),
