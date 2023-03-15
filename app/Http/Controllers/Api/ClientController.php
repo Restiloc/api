@@ -37,6 +37,8 @@ class ClientController extends Controller
             'street' => 'required|string',
             'postalCode' => 'required|string',
             'city' => 'required|string',
+            'latitude' => 'required|string',
+            'longitude' => 'required|string',
         ]);
 
         if (Client::create($validatedData)) {
@@ -86,6 +88,8 @@ class ClientController extends Controller
             'street' => 'required|string',
             'postalCode' => 'required|string',
             'city' => 'required|string',
+            'latitude' => 'required|string',
+            'longitude' => 'required|string',
         ]);
 
         if ($client->update($request->all())) {

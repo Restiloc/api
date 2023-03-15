@@ -24,6 +24,8 @@ class Client extends JsonResource
             'street' => $this->street,
             'postalCode' => $this->postalCode,
             'city' => $this->city,
+            'latitude' => $this->latitude,
+            'longitude' => $this->longitude,
             'url' => route('clients.index') . "/" . $this->id,
             'missions' => Mission::collection($this->whenLoaded('missions')),
         ];

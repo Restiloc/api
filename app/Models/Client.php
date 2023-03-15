@@ -23,6 +23,8 @@ class Client extends Model
         'postalCode',
         'street',
         'city',
+        'latitude',
+        'longitude',
     ];
 
     /**
