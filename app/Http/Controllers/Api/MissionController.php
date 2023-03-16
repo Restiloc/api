@@ -21,6 +21,34 @@ class MissionController extends Controller
     }
 
     /**
+     * Display a listing of expert's missions.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function expert(Request $request)
+    {
+        if ($request->_date === "today") {
+            /** Get the missions of the current day */
+            $missions = ResourcesMission::collection(
+                $request->user()
+                    ->missions
+                    ->where("isFinished", false)
+                    ->where("dateMission", now()->format("Y-m-d"))
+                    ->load('vehicle', 'client', 'garage', 'unavailability', 'pree')
+            );     
+        } else {
+            $missions = ResourcesMission::collection(
+                $request->user()
+                    ->missions
+                    ->where("isFinished", false)
+                    ->load('vehicle', 'client', 'garage', 'unavailability', 'pree')
+            );
+        }
+       
+        return response()->json($missions, 200);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
