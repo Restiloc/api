@@ -26,7 +26,7 @@ class MissionFactory extends Factory
             'folder' => fake()->regexify('[A-Z0-9]{5}'), // génère un nom alphanumérique de 5 caractères,
             // Possibilité de création d'une table type et renvoyer le type_id
             'type' => fake()->randomElement(['Garage', 'Client']),
-            'isFinished' => true,
+            'isFinished' => false,
             'vehicle_id' => Vehicle::all()->random()->id,
             'expert_id' => Expert::all()->random()->id,
             'garage_id' => null,
