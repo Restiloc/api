@@ -19,8 +19,12 @@ class MissionFactory extends Factory
      */
     public function definition()
     {
+        while ($date < now()->format("Y-m-d")) {
+            $date = Carbon::create(2023, rand(1, 12), rand(1, 31), null, null, null)->toDateTimeString();
+        }
+        
         return [
-            'dateMission' => Carbon::create(2023, rand(1, 12), rand(1, 31), null, null, null)->toDateTimeString(),
+            'dateMission' => $date,
             'startedAt' => Carbon::create(null, null, null, rand(8, 17), rand(0, 59), rand(0, 59))->toDateTimeString(),
             'kilometersCounter' => fake()->numberBetween(1000, 300000),
             'folder' => fake()->regexify('[A-Z0-9]{5}'), // génère un nom alphanumérique de 5 caractères,
