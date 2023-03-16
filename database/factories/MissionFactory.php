@@ -19,6 +19,8 @@ class MissionFactory extends Factory
      */
     public function definition()
     {
+        $date = Carbon::create(2023, rand(1, 12), rand(1, 31), null, null, null)->toDateTimeString();
+        
         while ($date < now()->format("Y-m-d")) {
             $date = Carbon::create(2023, rand(1, 12), rand(1, 31), null, null, null)->toDateTimeString();
         }
