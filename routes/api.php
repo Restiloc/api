@@ -45,10 +45,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('expertises', [VehicleExpertController::class, 'index'])->name('expertises.index');
     Route::get('/me', function (Request $request) {
         return $request->user();
-    });
-    Route::get('/me/missions', function (Request $request) {
-        return response()->json(ResourcesMission::collection($request->user()->missions->load('vehicle', 'client', 'garage', 'unavailability', 'pree')), 200);
-    });
+    })->name('me');
+    Route::get('/me/missions', [MissionController::class, 'expert'])->name('me.missions');
 });
 
 Route::get('/infos', [MissionController::class, 'index'])->name("infos");
