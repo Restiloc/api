@@ -71,7 +71,7 @@ class UnavailabilityController extends Controller
     public function update(Request $request, Unavailability $unavailability)
     {
         $request->validate([
-            'customerResponsible' => 'required|boolean',
+            'customerResponsible' => 'boolean',
         ]);
 
         if ($unavailability->update($request->all())) {

@@ -35,7 +35,7 @@ class MissionController extends Controller
                     ->where("isFinished", false)
                     ->where("dateMission", now()->format("Y-m-d"))
                     ->load('vehicle', 'client', 'garage', 'unavailability', 'pree')
-            );     
+            );
         } else {
             $missions = ResourcesMission::collection(
                 $request->user()
@@ -44,7 +44,7 @@ class MissionController extends Controller
                     ->load('vehicle', 'client', 'garage', 'unavailability', 'pree')
             );
         }
-       
+
         return response()->json($missions, 200);
     }
 
@@ -93,7 +93,6 @@ class MissionController extends Controller
         $mission = new ResourcesMission($mission->load('vehicle', 'expert', 'garage', 'client', 'unavailability', 'pree'));
         return response()->json($mission, 200);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -104,12 +103,12 @@ class MissionController extends Controller
     public function update(Request $request, Mission $mission)
     {
         $request->validate([
-            'dateMission' => 'required|date',
-            'startedAt' => 'required|time',
-            'kilometersCounter' => 'required|bigInteger',
-            'type' => 'required|string',
-            'folder' => 'required|string',
-            'isFinished' => 'required|boolean',
+            'dateMission' => 'date',
+            'startedAt' => 'time',
+            'kilometersCounter' => 'bigInteger',
+            'type' => 'string',
+            'folder' => 'string',
+            'isFinished' => 'boolean',
         ]);
 
         if ($mission->update($request->all())) {

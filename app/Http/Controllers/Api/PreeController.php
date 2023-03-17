@@ -74,10 +74,10 @@ class PreeController extends Controller
     public function update(Request $request, Pree $pree)
     {
         $request->validate([
-            'label' => 'required|string',
-            'description' => 'required|string',
-            'image' => 'required|string',
-            'signature' => 'required|string',
+            'label' => 'string',
+            'description' => 'string',
+            'image' => 'string',
+            'signature' => 'string',
         ]);
 
         if ($pree->update($request->all())) {

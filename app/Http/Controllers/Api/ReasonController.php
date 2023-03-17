@@ -71,7 +71,7 @@ class ReasonController extends Controller
     public function update(Request $request, Reason $reason)
     {
         $request->validate([
-            'label' => 'required|string',
+            'label' => 'string',
         ]);
 
         if ($reason->update($request->all())) {

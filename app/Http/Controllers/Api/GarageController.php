@@ -78,14 +78,14 @@ class GarageController extends Controller
     public function update(Request $request, Garage $garage)
     {
         $request->validate([
-            'name' => 'required|string',
-            'addressNumber' => 'required|int',
-            'street' => 'required|string',
-            'postalCode' => 'required|int',
-            'city' => 'required|string',
-            'phoneNumber' => 'required|int|min:10',
-            'latitude' => 'required|string',
-            'longitude' => 'required|string',
+            'name' => 'string',
+            'addressNumber' => 'int',
+            'street' => 'string',
+            'postalCode' => 'int',
+            'city' => 'string',
+            'phoneNumber' => 'int|min:10',
+            'latitude' => 'string',
+            'longitude' => 'string',
         ]);
 
         if ($garage->update($request->all())) {

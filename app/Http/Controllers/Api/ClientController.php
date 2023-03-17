@@ -80,16 +80,16 @@ class ClientController extends Controller
     public function update(Request $request, Client $client)
     {
         $request->validate([
-            'firstName' => 'required|string',
-            'lastName' => 'required|string',
-            'email' => 'required|string',
-            'phoneNumber' => 'required|string',
-            'addressNumber' => 'required|string',
-            'street' => 'required|string',
-            'postalCode' => 'required|string',
-            'city' => 'required|string',
-            'latitude' => 'required|string',
-            'longitude' => 'required|string',
+            'firstName' => 'string',
+            'lastName' => 'string',
+            'email' => 'string',
+            'phoneNumber' => 'string',
+            'addressNumber' => 'string',
+            'street' => 'string',
+            'postalCode' => 'string',
+            'city' => 'string',
+            'latitude' => 'string',
+            'longitude' => 'string',
         ]);
 
         if ($client->update($request->all())) {

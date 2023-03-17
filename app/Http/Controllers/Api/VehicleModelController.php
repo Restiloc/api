@@ -72,8 +72,8 @@ class VehicleModelController extends Controller
     public function update(Request $request, VehicleModel $model)
     {
         $request->validate([
-            'label' => 'required|string',
-            'brand' => 'required|string',
+            'label' => 'string',
+            'brand' => 'string',
         ]);
 
         if ($model->update($request->all())) {

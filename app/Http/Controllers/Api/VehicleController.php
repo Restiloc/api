@@ -73,9 +73,9 @@ class VehicleController extends Controller
     public function update(Request $request, Vehicle $vehicle)
     {
         $request->validate([
-            'licencePlate' => 'required|string',
-            'color' => 'required|string',
-            'releaseYear' => 'required|integer',
+            'licencePlate' => 'string',
+            'color' => 'string',
+            'releaseYear' => 'integer',
         ]);
 
         if ($vehicle->update($request->all())) {
