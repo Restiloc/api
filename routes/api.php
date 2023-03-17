@@ -47,6 +47,7 @@ Route::middleware('auth:sanctum')->group(function () {
         return $request->user();
     })->name('me');
     Route::get('/me/missions', [MissionController::class, 'expert'])->name('me.missions');
+    Route::post('/auth/logout', [AuthController::class, 'logout']);
 });
 
 Route::get('/infos', [MissionController::class, 'index'])->name("infos");

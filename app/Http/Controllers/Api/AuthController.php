@@ -108,4 +108,30 @@ class AuthController extends Controller
             ], 500);
         }
     }
+
+    /**
+     * Logout The expert
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+
+        if (!($request->user() instanceof Expert)) {
+            return response()->json(['error' => 'Expert not found.'], 404);
+        }
+
+        try {
+            return response()->json([
+                'status' => true,
+                'message' => 'Expert logged out successfully'
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
 }
