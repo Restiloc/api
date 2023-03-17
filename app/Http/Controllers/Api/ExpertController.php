@@ -77,13 +77,13 @@ class ExpertController extends Controller
     public function update(Request $request, Expert $expert)
     {
         $request->validate([
-            'lastName' => 'required|string',
-            'firstName' => 'required|string',
-            'email' => 'required|email',
-            'phoneNumber' => 'required|int|min:10',
-            'username' => 'required|string',
-            'password' => 'required|password|Between:8,12',
-            'password_confirmation' => 'required|same:password',
+            'lastName' => 'string',
+            'firstName' => 'string',
+            'email' => 'email',
+            'phoneNumber' => 'int|min:10',
+            'username' => 'string',
+            'password' => 'password|Between:8,12',
+            'password_confirmation' => 'same:password',
         ]);
 
         if ($expert->update($request->all())) {
