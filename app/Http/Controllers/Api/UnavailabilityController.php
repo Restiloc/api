@@ -16,7 +16,7 @@ class UnavailabilityController extends Controller
      */
     public function index()
     {
-        $unavailability = ResourcesUnavailability::collection(Unavailability::with('reason', 'vehicle', 'missions')->get());
+        $unavailability = ResourcesUnavailability::collection(Unavailability::with('reason', 'missions.vehicle', 'missions')->get());
         return response()->json($unavailability, 200);
     }
 
