@@ -23,8 +23,8 @@ class GarageFactory extends Factory
             'postalCode' => fake()->postcode(),
             'city' => fake()->city(),
             'phoneNumber' => fake()->phoneNumber(),
-            'latitude' => fake()->latitude(),
-            'longitude' => fake()->longitude()
+            'latitude' => "48.5734053",
+            'longitude' => "7.7521113"
         ];
     }
 }
