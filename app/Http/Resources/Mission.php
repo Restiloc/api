@@ -14,40 +14,21 @@ class Mission extends JsonResource
      */
     public function toArray($request)
     {
-        try {
-            return [
-                'id' => $this->id,
-                'dateMission' => $this->dateMission,
-                'startedAt' => $this->startedAt,
-                'kilometersCounter' => $this->kilometersCounter,
-                'folder' => $this->folder,
-                'type' => $this->type,
-                'isFinished' => $this->isFinished,
-                'route' => route('missions.index') . "/" . $this->id,
-                'vehicle' => new Vehicle($this->whenLoaded('vehicle') ? $this->whenLoaded('vehicle')->load('model') : $this->whenLoaded('vehicle')),
-                'expert' => new Expert($this->whenLoaded('expert')),
-                'garage' => new Garage($this->whenLoaded('garage')),
-                'client' => new Client($this->whenLoaded('client')),
-                'unavailability' => new Unavailability($this->whenLoaded('unavailability')),
-                'pree' => Pree::collection($this->whenLoaded('pree')),
-            ];
-        } catch (Exception $e) {
-            return [
-                'id' => $this->id,
-                'dateMission' => $this->dateMission,
-                'startedAt' => $this->startedAt,
-                'kilometersCounter' => $this->kilometersCounter,
-                'folder' => $this->folder,
-                'type' => $this->type,
-                'isFinished' => $this->isFinished,
-                'route' => route('missions.index') . "/" . $this->id,
-                'vehicle' => new Vehicle($this->whenLoaded('vehicle')),
-                'expert' => new Expert($this->whenLoaded('expert')),
-                'garage' => new Garage($this->whenLoaded('garage')),
-                'client' => new Client($this->whenLoaded('client')),
-                'unavailability' => new Unavailability($this->whenLoaded('unavailability')),
-                'pree' => Pree::collection($this->whenLoaded('pree')),
-            ];
-        }
+        return [
+            'id' => $this->id,
+            'dateMission' => $this->dateMission,
+            'startedAt' => $this->startedAt,
+            'kilometersCounter' => $this->kilometersCounter,
+            'folder' => $this->folder,
+            'type' => $this->type,
+            'isFinished' => $this->isFinished,
+            'route' => route('missions.index') . "/" . $this->id,
+            'vehicle' => new Vehicle($this->whenLoaded('vehicle') ? $this->whenLoaded('vehicle')->load('model') : $this->whenLoaded('vehicle')),
+            'expert' => new Expert($this->whenLoaded('expert')),
+            'garage' => new Garage($this->whenLoaded('garage')),
+            'client' => new Client($this->whenLoaded('client')),
+            'unavailability' => new Unavailability($this->whenLoaded('unavailability')),
+            'pree' => Pree::collection($this->whenLoaded('pree')),
+        ];
     }
 }
