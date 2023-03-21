@@ -25,8 +25,8 @@ class ClientFactory extends Factory
             'postalCode' => fake()->postcode(),
             'street' => fake()->streetName(),
             'city' => fake()->city(),
-            'latitude' => fake()->latitude(),
-            'longitude' => fake()->longitude()
+            'latitude' => "48.8333",
+            'longitude' => "7.1833"
         ];
     }
 }
