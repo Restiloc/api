@@ -16,6 +16,8 @@ class Unavailability extends Model
      */
     protected $fillable = [
         'customerResponsible',
+        'reason_id',
+        'mission_id'
     ];
 
     /**
