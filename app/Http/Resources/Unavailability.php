@@ -19,7 +19,7 @@ class Unavailability extends JsonResource
             'customerResponsible' => $this->customerResponsible ? true : false,
             'route' => route('unavailabilities.index') . "/" . $this->id,
             'missions' => Mission::collection($this->whenLoaded('missions')),
-            'reason' => new Reason($this->whenLoaded('reason')),
+            'reason' => $this->reason,
         ];
     }
 }
