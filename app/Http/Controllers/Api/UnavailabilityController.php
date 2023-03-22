@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Resources\Unavailability as ResourcesUnavailability;
 use App\Http\Controllers\Controller;
 use App\Models\Unavailability;
+use App\Models\Mission;
 use Illuminate\Http\Request;
 
 class UnavailabilityController extends Controller
