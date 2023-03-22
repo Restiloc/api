@@ -22,7 +22,7 @@ class Expert extends JsonResource
             'phoneNumber' => $this->phoneNumber,
             'username' => $this->username,
             'route' => route('experts.index') . "/" . $this->id,
-            'missions' => Mission::collection($this->whenLoaded('missions')),
+            'missions' => Mission::collection($this->whenLoaded('missions')->load('vehicle', 'unavailability')),
         ];
     }
 }
