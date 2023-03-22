@@ -27,7 +27,7 @@ class Mission extends JsonResource
             'expert' => new Expert($this->whenLoaded('expert')),
             'garage' => new Garage($this->whenLoaded('garage')),
             'client' => new Client($this->whenLoaded('client')),
-            'unavailability' => new Unavailability($this->whenLoaded('unavailability')->load('reason')),
+            'unavailability' =>  new Unavailability($this->whenLoaded('unavailability')) !== null ? new Unavailability($this->whenLoaded('unavailability') !== null ? $this->whenLoaded('unavailability')->load('reason') : $this->whenLoaded('unavailability')) : null,,
             'pree' => Pree::collection($this->whenLoaded('pree')),
         ];
     }
