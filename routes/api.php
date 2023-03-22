@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\GarageController;
 use App\Http\Controllers\Api\ReasonController;
 use App\Http\Controllers\Api\MissionController;
 use App\Http\Controllers\Api\VehicleController;
+use App\Http\Controllers\Api\StatisticController;
 use App\Http\Resources\Mission as ResourcesMission;
 use App\Http\Controllers\Api\VehicleModelController;
 use App\Http\Controllers\Api\VehicleExpertController;
@@ -46,6 +47,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', function (Request $request) {
         return $request->user();
     })->name('me');
+    Route::get('/stats', [StatisticController::class, 'getUnavailabilitiesBetweenDates'])->name("stats");
     Route::get('/me/missions', [MissionController::class, 'expert'])->name('me.missions');
     Route::post('/auth/logout', [AuthController::class, 'logout']);
 });
