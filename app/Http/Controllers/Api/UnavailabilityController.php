@@ -29,10 +29,14 @@ class UnavailabilityController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'customerResponsible' => 'required|boolean',
+            'mission_id' => 'exists:missions,id',
+            'reason_id' => 'exists:reasons,id'
         ]);
 
         if (Unavailability::create($validatedData)) {
+            $mission = Mission::find($request->mission_id);
+            $mission->isFinished = true;
+            $mission->save();
             return response()->json([
                 'success' => 'true',
                 'message' => 'Unavailability added successfully',
