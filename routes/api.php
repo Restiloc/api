@@ -48,9 +48,9 @@ Route::middleware('auth:sanctum')->group(function () {
         return $request->user();
     })->name('me');
     Route::get('/stats', [StatisticController::class, 'getUnavailabilitiesBetweenDates'])->name("stats");
+    Route::get('/stats/weekly', [StatisticController::class, 'getWeeklyStats'])->name("stats.weekly");
     Route::get('/me/missions', [MissionController::class, 'expert'])->name('me.missions');
     Route::post('/auth/logout', [AuthController::class, 'logout']);
 });
 
-Route::get('/stats/weekly', [StatisticController::class, 'getWeeklyStats'])->name("stats.weekly");
 Route::get('/infos', [MissionController::class, 'index'])->name("infos");
