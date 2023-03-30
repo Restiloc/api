@@ -22,6 +22,7 @@ class UnavailabilityFactory extends Factory
             'customerResponsible' => fake()->boolean(),
             'reason_id' => Reason::all()->random()->id,
             'mission_id' => Mission::all()->random()->id,
+            'created_at' => fake()->dateTimeBetween('-1 year', 'now'),
         ];
     }
 }

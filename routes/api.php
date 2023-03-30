@@ -52,4 +52,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/auth/logout', [AuthController::class, 'logout']);
 });
 
+Route::get('/stats/weekly', [StatisticController::class, 'getWeeklyStats'])->name("stats.weekly");
 Route::get('/infos', [MissionController::class, 'index'])->name("infos");
