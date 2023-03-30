@@ -35,7 +35,6 @@ class StatisticController extends Controller
 
         return response()->json($tab);
     }
-
     public function getWeeklyStats()
     {
         $i = 0;
@@ -47,20 +46,20 @@ class StatisticController extends Controller
         $unavailabilities->groupBy(function ($item) {
             return $item->created_at->format('Y');
         })->map(function ($item, $year) use (&$tab, &$i) {
-            
+
             // Generate an array of 52 weeks
             $tab[] = [
                 'year' => $year,
                 'weeks' => array_fill(1, 52, [])
             ];
-            
+
             // Group unavailabilities by week
             $item->groupBy(function ($item) {
                 return $item->created_at->format('W');
             })->map(function ($item, $week) use (&$tab, $i) {
                 // Group unavailabilities by reason
-                $tab[$i]['weeks'][(int) $week][] = $item->groupBy('reason_id')->map(function ($item, $key) {
-                    return [
+                $item->groupBy('reason_id')->map(function ($item, $key) use (&$tab, $week, $i) {
+                    $tab[$i]['weeks'][(int) $week][] = [
                         'reason' => Reason::find($key),
                         'count' => $item->count()
                     ];
