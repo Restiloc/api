@@ -16,7 +16,7 @@ class ReasonController extends Controller
      */
     public function index()
     {
-        $reason = ResourcesReason::collection(Reason::with('unavailabilities')->get());
+        $reason = ResourcesReason::collection(Reason::all());
         return response()->json($reason, 200);
     }
 
