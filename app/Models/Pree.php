@@ -26,6 +26,7 @@ class Pree extends Model
         'description',
         'image',
         'signature',
+        'mission_id'
     ];
 
     /**
