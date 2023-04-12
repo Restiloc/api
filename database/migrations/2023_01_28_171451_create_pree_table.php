@@ -20,7 +20,8 @@ return new class extends Migration
             $table->text('image')
                 ->default("");
             $table->text('signature')
-                ->default("");
+                ->nullable()
+                ->default(null);
             $table->foreignId('mission_id')
                 ->constrained('missions')
                 ->onDelete('no action');
