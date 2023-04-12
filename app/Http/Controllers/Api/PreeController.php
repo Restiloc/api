@@ -31,8 +31,8 @@ class PreeController extends Controller
         $validatedData = $request->validate([
             'label' => 'required|string',
             'description' => 'required|string',
-            'image' => 'required|string',
-            'signature' => 'required|string',
+            'image' => 'string',
+            'signature' => 'string',
         ]);
 
         if (Pree::create($validatedData)) {
