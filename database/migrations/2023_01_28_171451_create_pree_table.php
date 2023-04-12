@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('label');
             $table->string('description');
-            $table->string('image');
-            $table->string('signature');
+            $table->string('image')
+                ->default("");
+            $table->string('signature')
+                ->default("");
             $table->foreignId('mission_id')
                 ->constrained('missions')
                 ->onDelete('no action');
