@@ -29,6 +29,7 @@ class PreeController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'mission_id' => 'exists:missions,id'
             'label' => 'required|string',
             'description' => 'required|string',
             'image' => 'string',
