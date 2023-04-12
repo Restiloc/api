@@ -80,7 +80,7 @@ class ExpertController extends Controller
             'lastName' => 'string',
             'firstName' => 'string',
             'email' => 'email',
-            'phoneNumber' => 'required|numeric|min:10',
+            'phoneNumber' => 'numeric|min:10',
             'username' => 'string',
             'password' => 'password|Between:8,12',
             'password_confirmation' => 'same:password',
