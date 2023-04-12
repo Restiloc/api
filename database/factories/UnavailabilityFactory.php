@@ -18,10 +18,14 @@ class UnavailabilityFactory extends Factory
      */
     public function definition()
     {
+        $mission = Mission::factory()->create([
+            "isFinished" => true   
+        ]);
+        
         return [
             'customerResponsible' => fake()->boolean(),
             'reason_id' => Reason::all()->random()->id,
-            'mission_id' => Mission::all()->random()->id,
+            'mission_id' => $mission->id,
             'created_at' => fake()->dateTimeBetween('-1 year', 'now'),
         ];
     }
