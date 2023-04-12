@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
     private int $nbGarages = 5;
     private int $nbClients = 5;
     private int $nbMissions = 50;
-    private int $nbUnavailabilities = 400;
+    private int $nbUnavailabilities = 20;
     private int $nbPree = 5;
 
     /**
