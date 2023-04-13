@@ -19,9 +19,6 @@ return new class extends Migration
             $table->string('description');
             $table->text('image')
                 ->default("");
-            $table->text('signature')
-                ->nullable()
-                ->default(null);
             $table->foreignId('mission_id')
                 ->constrained('missions')
                 ->onDelete('no action');

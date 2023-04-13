@@ -22,6 +22,8 @@ class Mission extends JsonResource
             'folder' => $this->folder,
             'type' => $this->type,
             'isFinished' => $this->isFinished,
+            'signature' => $this->signature,
+            'signedByClient' => $this->signedByClient,
             'route' => route('missions.index') . "/" . $this->id,
             'vehicle' => new Vehicle($this->whenLoaded('vehicle')),
             'expert' => new Expert($this->whenLoaded('expert')),

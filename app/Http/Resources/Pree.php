@@ -19,7 +19,6 @@ class Pree extends JsonResource
             'label' => $this->label,
             'description' => $this->description,
             'image' => $this->image,
-            'signature' => $this->signature,
             'route' => route('pree.index') . "/" . $this->id,
             'mission' => new Mission($this->whenLoaded('mission')),
         ];

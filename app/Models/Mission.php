@@ -21,6 +21,8 @@ class Mission extends Model
         'folder',
         'type',
         'isFinished',
+        'signature',
+        'signedByClient'
     ];
 
     /**

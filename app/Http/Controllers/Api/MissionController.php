@@ -119,6 +119,8 @@ class MissionController extends Controller
             'type' => 'string',
             'folder' => 'string',
             'isFinished' => 'boolean',
+            'signature' => 'string',
+            'signedByClient' => 'boolean'
         ]);
 
         if ($mission->update($request->all())) {

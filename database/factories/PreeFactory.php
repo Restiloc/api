@@ -23,7 +23,6 @@ class PreeFactory extends Factory
             'label' => fake()->word(),
             'description' => fake()->words(5, true),
             'image' => fake()->image(),
-            'signature' => fake()->image(),
             'mission_id' => Mission::all()->random()->id,
         ];
     }

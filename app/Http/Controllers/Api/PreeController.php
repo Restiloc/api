@@ -33,7 +33,6 @@ class PreeController extends Controller
             'label' => 'required|string',
             'description' => 'required|string',
             'image' => 'string',
-            'signature' => 'string',
         ]);
 
         if (Pree::create($validatedData)) {
@@ -78,7 +77,6 @@ class PreeController extends Controller
             'label' => 'string',
             'description' => 'string',
             'image' => 'string',
-            'signature' => 'string',
         ]);
 
         if ($pree->update($request->all())) {
