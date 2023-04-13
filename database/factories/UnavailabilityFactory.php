@@ -21,6 +21,14 @@ class UnavailabilityFactory extends Factory
         $mission = Mission::factory()->create([
             "isFinished" => true   
         ]);
+
+        if ($mission->type === 'Garage') {
+            $mission->garage_id = Garage::all()->random()->id;
+        } elseif ($mission->type === 'Client') {
+            $mission->client_id = Client::all()->random()->id;
+        }
+        
+        $mission->save();
         
         return [
             'customerResponsible' => fake()->boolean(),
