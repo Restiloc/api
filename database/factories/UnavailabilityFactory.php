@@ -4,6 +4,8 @@ namespace Database\Factories;
 
 use App\Models\Mission;
 use App\Models\Reason;
+use App\Models\Garage;
+use App\Models\Client;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
