@@ -30,6 +30,7 @@ class UnavailabilityController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'customerResponsible' => 'required|boolean',
             'mission_id' => 'exists:missions,id',
             'reason_id' => 'exists:reasons,id'
         ]);
