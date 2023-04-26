@@ -76,6 +76,7 @@ class VehicleController extends Controller
             'licencePlate' => 'string',
             'color' => 'string',
             'releaseYear' => 'integer',
+            'vehicle_state_id' => 'exists:vehicle_states,id',
         ]);
 
         if ($vehicle->update($request->all())) {

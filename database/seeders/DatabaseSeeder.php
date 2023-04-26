@@ -7,11 +7,13 @@ use App\Models\Company;
 use App\Models\Pree;
 use App\Models\Expert;
 use App\Models\Garage;
+use App\Models\GuaranteeLevel;
 use App\Models\Reason;
 use App\Models\Mission;
 use App\Models\Vehicle;
 use App\Models\VehicleModel;
 use App\Models\Unavailability;
+use App\Models\VehicleState;
 use Illuminate\Database\Seeder;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Output\ConsoleOutput;
@@ -33,25 +35,97 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        // Seed the vehicles states
+        $output = new ConsoleOutput();
+        $this->command->comment("Seeding vehicles states in progress...\n");
+
+        /**
+         * Make fake vehicles states
+         */
+        $states = [
+            "Réparable",
+            "Non réparable",
+            "Dangereux"
+        ];
+
+        $progressBar = new ProgressBar($output, count($states));
+
+        $progressBar->start();
+
+        foreach ($states as $state) {
+            VehicleState::factory()->create([
+                'label' => $state
+            ]);
+            $progressBar->advance();
+        }
+
+        // Seed the guarantees levels
+        $output = new ConsoleOutput();
+        $this->command->comment("\n\nSeeding guanratees levels in progress...\n");
+
+        /**
+         * Make fake vehicles states
+         */
+        $states = [
+            "Tous riques",
+            "Tiers",
+        ];
+
+        $progressBar = new ProgressBar($output, count($states));
+
+        $progressBar->start();
+
+        foreach ($states as $state) {
+            GuaranteeLevel::factory()->create([
+                'label' => $state
+            ]);
+            $progressBar->advance();
+        }
+
         // Seed the companies
         $output = new ConsoleOutput();
-        $this->command->comment("Seeding companies in progress...\n");
+        $this->command->comment("\n\nSeeding companies in progress...\n");
 
         /**
          * Make fake companies
          */
-        $nbCompanies = $this->nbCompanies;
+        $companies = [
+            [
+                "MAIF Assurance Strasbourg Etoile",
+                "18 route de Polygone",
+                "67000",
+                "Strasbourg",
+                "03 88 14 33 00"
+            ],
+            [
+                "MATMUT",
+                "1/3 Rue Sait-Aloise",
+                "67100",
+                "Strasbourg",
+                "03 88 14 33 00"
+            ],
+            [
+                "AXA Assurance",
+                "6 Quai Kléber",
+                "",
+                "",
+                "03 88 14 33 00"
+            ]
+        ];
 
-        $progressBar = new ProgressBar($output, $nbCompanies);
+        $progressBar = new ProgressBar($output, count($companies));
 
         $progressBar->start();
 
-        for (
-            $i = 0;
-            $i < $nbCompanies;
-            $i++
-        ) {
-            Company::factory()->create();
+        foreach ($companies as $company) {
+            Company::factory()->create([
+                'name' => $company[0],
+                'address' => $company[1],
+                'postalCode' => $company[2],
+                'city' => $company[3],
+                'phoneNumber' => $company[4],
+            ]);
             $progressBar->advance();
         }
 
@@ -97,7 +171,11 @@ class DatabaseSeeder extends Seeder
                     'licencePlate' => $car['car_vin'],
                     'color' => $car['car_color'],
                     'releaseYear' => $car['car_model_year'],
-                    'company_id' => Company::inRandomOrder()->first()->id,
+                    'contract_company_id' => Company::inRandomOrder()->first()->id,
+                    'contractNumber' => rand(100000, 999999),
+                    'contract_guarantee_level_id' => GuaranteeLevel::all()->random()->id,
+                    'contractEndDate' => date('Y-m-d H:i:s', strtotime('+ ' . rand(1, 3) . ' years')),
+                    'vehicle_state_id' => VehicleState::all()->random()->id,
                     'vehicle_model_id' => VehicleModel::where([
                         ['label', $car['car_model']],
                         ['brand', $car['car']],
