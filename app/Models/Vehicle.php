@@ -18,6 +18,12 @@ class Vehicle extends Model
         'licencePlate',
         'color',
         'releaseYear',
+        'contract_company_id',
+        'contractNumber',
+        'contract_guarantee_level_id',
+        'contractEndDate',
+        'vehicle_state_id', 
+        'vehicle_model_id',
     ];
 
     /**
@@ -37,7 +43,7 @@ class Vehicle extends Model
      */
     public function company()
     {
-        return $this->belongsTo(Company::class, 'company_id', 'id');
+        return $this->belongsTo(Company::class, 'contract_company_id', 'id');
     }
 
     /**
@@ -48,5 +54,18 @@ class Vehicle extends Model
     public function missions()
     {
         return $this->hasMany(Mission::class);
+    }
+
+    /**
+     * Get the state of the Vehicle.
+     */
+    public function state()
+    {
+        return $this->belongsTo(VehicleState::class, 'vehicle_state_id', 'id');
+    }
+
+    public function guarantee()
+    {
+        return $this->belongsTo(GuaranteeLevel::class, 'contract_guarantee_level_id', 'id');
     }
 }
