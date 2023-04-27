@@ -23,7 +23,8 @@ class Vehicle extends JsonResource
             'route' => route('vehicles.index') . "/" . $this->id,
             'missions' => Mission::collection($this->whenLoaded('missions')),
             'model' => $this->model,
-            'company' => $this->company
+            'company' => $this->company,
+            'contrat' => $this->contrat
         ];
     }
 }
