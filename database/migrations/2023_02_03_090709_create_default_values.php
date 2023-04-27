@@ -1,17 +1,8 @@
 <?php
 
-use App\Models\Assurence;
-use App\Models\Pree;
+use App\Models\Insurance;
 use App\Models\Expert;
-use App\Models\Garage;
-use App\Models\Reason;
-use App\Models\Mission;
-use App\Models\Vehicle;
-use App\Models\VehicleModel;
-use App\Models\Unavailability;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -52,8 +43,8 @@ return new class extends Migration
             'password' => 'password123',
         ]);
 
-        Assurence::create([
-            'nom' => "MAIF Assurences Strasbourg Etoile",
+        Insurance::create([
+            'name' => "MAIF",
             'addressNumber' => "18",
             'street' => "route de Polygone",
             'postalCode' => "67000",
@@ -61,8 +52,8 @@ return new class extends Migration
             'phoneNumber' => "0972721515",
         ]);
 
-        Assurence::create([
-            'nom' => "MATMUT",
+        Insurance::create([
+            'name' => "MATMUT",
             'addressNumber' => "1/3",
             'street' => "rue Saint Aloise",
             'postalCode' => "67100",
@@ -70,8 +61,8 @@ return new class extends Migration
             'phoneNumber' => "0388659778",
         ]);
 
-        Assurence::create([
-            'nom' => "AXA Assurence",
+        Insurance::create([
+            'name' => "AXA",
             'addressNumber' => "6",
             'street' => "Quai Kleber",
             'postalCode' => "67000",
