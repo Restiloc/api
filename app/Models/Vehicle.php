@@ -41,6 +41,16 @@ class Vehicle extends Model
     }
 
     /**
+     * Get the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function contrat()
+    {
+        return $this->belongsTo(Contrat::class, 'contrat_id', 'id');
+    }
+
+    /**
      * Get the missions for the Vehicle.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
