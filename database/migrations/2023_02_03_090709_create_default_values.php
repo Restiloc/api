@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Assurence;
 use App\Models\Pree;
 use App\Models\Expert;
 use App\Models\Garage;
@@ -49,6 +50,33 @@ return new class extends Migration
             'phoneNumber' => "0685258965",
             'username' => "ale.hen",
             'password' => 'password123',
+        ]);
+
+        Assurence::create([
+            'nom' => "MAIF Assurences Strasbourg Etoile",
+            'addressNumber' => "18",
+            'street' => "route de Polygone",
+            'postalCode' => "67000",
+            'city' => "Strasbourg",
+            'phoneNumber' => "0972721515",
+        ]);
+
+        Assurence::create([
+            'nom' => "MATMUT",
+            'addressNumber' => "1/3",
+            'street' => "rue Saint Aloise",
+            'postalCode' => "67100",
+            'city' => "Strasbourg",
+            'phoneNumber' => "0388659778",
+        ]);
+
+        Assurence::create([
+            'nom' => "AXA Assurence",
+            'addressNumber' => "6",
+            'street' => "Quai Kleber",
+            'postalCode' => "67000",
+            'city' => "Strasbourg",
+            'phoneNumber' => "0388150490",
         ]);
     }
 
