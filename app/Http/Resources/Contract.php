@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Contrat extends JsonResource
+class contract extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,12 +16,12 @@ class Contrat extends JsonResource
     {
         return [
             'id' => $this->id,
-            'numeroContrat' => $this->numeroContrat,
+            'contractNumber' => $this->contractNumber,
             'dateDebut' => $this->dateDebut,
             'dateFin' => $this->dateFin,
             'degreeFranchise' => $this->degreeFranchise,
-            'url' => route('contrats.index') . "/" . $this->id,
-            'assurence' => new Assurence($this->assurence),
+            'url' => route('contracts.index') . "/" . $this->id,
+            'insurance' => new Insurance($this->insurance),
         ];
     }
 }

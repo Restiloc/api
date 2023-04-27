@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Contrat>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Contract>
  */
-class ContratFactory extends Factory
+class ContractFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,12 +17,12 @@ class ContratFactory extends Factory
     public function definition(): array
     {
         return [
-            'numeroContrat'
+            'contractNumber'
             => fake()->numberBetween(100000, 999999),
             'dateDebut' => fake()->dateTimeBetween('-1 years', 'now'),
             'dateFin' => fake()->dateTimeBetween('now', '+1 years'),
             'degreeFranchise' => fake()->numberBetween(0, 2),
-            'assurence_id' => fake()->numberBetween(1, 3),
+            'insurance_id' => fake()->numberBetween(1, 3),
         ];
     }
 }

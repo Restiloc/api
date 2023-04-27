@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contrats', function (Blueprint $table) {
+        Schema::create('contracts', function (Blueprint $table) {
             $table->id();
-            $table->string("numeroContrat")
+            $table->string("contractNumber")
                 ->unique();
             $table->date("dateDebut");
             $table->date("dateFin");
             $table->string("degreeFranchise");
-            $table->foreignId("assurence_id")
+            $table->foreignId("insurance_id")
                 ->nullable()
-                ->constrained("assurences")
+                ->constrained("insurances")
                 ->onDelete('set null');
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contrats');
+        Schema::dropIfExists('contracts');
     }
 };

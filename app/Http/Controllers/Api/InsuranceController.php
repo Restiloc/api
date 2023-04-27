@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Resources\Assurence as ResourcesAssurence;
+use App\Http\Resources\Insurance as ResourcesInsurance;
 use App\Http\Controllers\Controller;
-use App\Models\Assurence;
+use App\Models\Insurance;
 use Illuminate\Http\Request;
 
-class AssurenceController extends Controller
+class InsuranceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $assurence = ResourcesAssurence::collection(Assurence::all());
-        return response()->json($assurence, 200);
+        $insurance = ResourcesInsurance::collection(Insurance::all());
+        return response()->json($insurance, 200);
     }
 
     /**

@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Resources\Contrat as ResourcesContrat;
+use App\Http\Resources\Contract as ResourcesContract;
 use App\Http\Controllers\Controller;
-use App\Models\Contrat;
+use App\Models\Contract;
 use Illuminate\Http\Request;
 
-class ContratController extends Controller
+class ContractController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $contrat = ResourcesContrat::collection(Contrat::all());
-        return response()->json($contrat, 200);
+        $contract = ResourcesContract::collection(Contract::all());
+        return response()->json($contract, 200);
     }
 
     /**
@@ -29,7 +29,7 @@ class ContratController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Contrat $contrat)
+    public function show(Contract $contract)
     {
         //
     }
@@ -37,7 +37,7 @@ class ContratController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Contrat $contrat)
+    public function update(Request $request, Contract $contract)
     {
         //
     }
@@ -45,7 +45,7 @@ class ContratController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Contrat $contrat)
+    public function destroy(Contract $contract)
     {
         //
     }

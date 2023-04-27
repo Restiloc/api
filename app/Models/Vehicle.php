@@ -45,9 +45,9 @@ class Vehicle extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function contrat()
+    public function contract()
     {
-        return $this->belongsTo(Contrat::class, 'contrat_id', 'id');
+        return $this->belongsTo(Contract::class, 'contract_id', 'id');
     }
 
     /**

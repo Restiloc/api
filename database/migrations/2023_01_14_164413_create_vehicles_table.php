@@ -25,9 +25,9 @@ return new class extends Migration
             $table->foreignId('company_id')
                 ->constrained('companies')
                 ->onDelete('no action');
-            $table->foreignId('contrat_id')
+            $table->foreignId('contract_id')
                 ->nullable()
-                ->constrained('contrats')
+                ->constrained('contracts')
                 ->onDelete('set null');
             $table->timestamps();
         });

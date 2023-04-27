@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Assurence extends JsonResource
+class Insurance extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,13 +16,13 @@ class Assurence extends JsonResource
     {
         return [
             'id' => $this->id,
-            'nom' => $this->nom,
+            'name' => $this->name,
             'addressNumber' => $this->addressNumber,
             'street' => $this->street,
             'postalCode' => $this->postalCode,
             'city' => $this->city,
             'phoneNumber' => $this->phoneNumber,
-            'url' => route('assurences.index') . "/" . $this->id,
+            'url' => route('insurances.index') . "/" . $this->id,
         ];
     }
 }

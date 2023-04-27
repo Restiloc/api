@@ -23,7 +23,7 @@ class Vehicle extends JsonResource
             'missions' => Mission::collection($this->whenLoaded('missions')),
             'model' => $this->model,
             'company' => $this->company,
-            'contrat' => new Contrat($this->contrat)
+            'contract' => new Contract($this->contract)
         ];
     }
 }

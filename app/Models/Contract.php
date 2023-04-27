@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Contrat extends Model
+class Contract extends Model
 {
     use HasFactory;
 
@@ -15,7 +15,7 @@ class Contrat extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'numeroContrat',
+        'contractNumber',
         'dateDebut',
         'dateFin',
         'degreeFranchise'
@@ -26,8 +26,8 @@ class Contrat extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function assurence()
+    public function insurance()
     {
-        return $this->belongsTo(Assurence::class, 'assurence_id', 'id');
+        return $this->belongsTo(Insurance::class, 'insurance_id', 'id');
     }
 }
