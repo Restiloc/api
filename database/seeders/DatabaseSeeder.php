@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Client;
 use App\Models\Company;
+use App\Models\Contrat;
 use App\Models\Pree;
 use App\Models\Expert;
 use App\Models\Garage;
@@ -18,6 +19,7 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 
 class DatabaseSeeder extends Seeder
 {
+    private int $nbContrat = 15;
     private int $nbCompanies = 5;
     private int $nbVehicles = 15;
     private int $nbGarages = 5;
@@ -35,7 +37,31 @@ class DatabaseSeeder extends Seeder
     {
         // Seed the companies
         $output = new ConsoleOutput();
-        $this->command->comment("Seeding companies in progress...\n");
+        $this->command->comment("Seeding contrats in progress...\n");
+
+        /**
+         * Make fake companies
+         */
+        $nbContrat = $this->nbContrat;
+
+        $progressBar = new ProgressBar($output, $nbContrat);
+
+        $progressBar->start();
+
+        for (
+            $i = 0;
+            $i < $nbContrat;
+            $i++
+        ) {
+            Contrat::factory()->create();
+            $progressBar->advance();
+        }
+
+        $progressBar->finish();
+
+        // Seed the companies
+        $output = new ConsoleOutput();
+        $this->command->comment("\n\nSeeding companies in progress...\n");
 
         /**
          * Make fake companies
@@ -102,6 +128,7 @@ class DatabaseSeeder extends Seeder
                         ['label', $car['car_model']],
                         ['brand', $car['car']],
                     ])->first()->id,
+                    'contrat_id' => Contrat::inRandomOrder()->first()->id,
                 ]);
             }
 
