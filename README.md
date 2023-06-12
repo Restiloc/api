@@ -9,14 +9,14 @@
     Restiloc API built with Laravel
   </p>
 
-<a href="https://github.com/Restiloc/docs/tree/master/api"><strong>Documentation »</strong></a>
+<a href="https://github.com/Restiloc/docs"><strong>Documentation »</strong></a>
 
 <h4>
-    <a href="https://restiloc.space">Go to the site</a>
+    <a href="https://restiloc.github.io/landing/">Go to the site</a>
   <span> · </span>
-    <a href="https://github.com/Restiloc/api/issues">Report a bug</a>
+    <a href="https://github.com/Restiloc/restiloc/issues">Report a bug</a>
   <span> · </span>
-    <a href="https://github.com/Restiloc/api/issues">I have an idea</a>
+    <a href="https://github.com/Restiloc/restiloc/issues">I have an idea</a>
   </h4>
 </div>
 
