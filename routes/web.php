@@ -4,6 +4,7 @@ use App\Http\Controllers\TestController;
 use App\Models\Client;
 use App\Http\Resources\Client as ResourcesClient;
 use App\Models\Garage;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('landing-page');
-});
+Route::get('/{x?}', fn () => [
+    "message" => "Welcome to the API of Restiloc",
+    "version" => "1.0.0",
+    "documentation" => "https://github.com/Restiloc/docs",
+    "authors" => [
+        "HETT Alizée" => "https://github.com/Dinholu/",
+        "SACCHETTO Vladimir" => "https://github.com/Vladimir9595",
+        "HENRY Alexis" => "https://github.com/AlxisHenry/"
+    ]
+]);
