@@ -1,9 +1,6 @@
 {
     "private": true,
     "scripts": {
-    	"docs:dev": "vitepress dev docs",
-    	"docs:build": "vitepress build docs",
-    	"docs:preview": "vitepress preview docs",
         "dev": "vite",
         "build": "vite build"
     },
@@ -12,9 +9,7 @@
         "laravel-vite-plugin": "^0.7.2",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
-        "vite": "^4.0.0",
-        "vitepress": "^1.0.0-alpha.46",
-        "vue": "^3.2.47"
+        "vite": "^4.0.0"
     },
     "dependencies": {
         "esbuild": "0.17.4"
